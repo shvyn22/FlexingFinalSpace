@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/characterFragment">
+
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="shvyn22.myapplication.ui.character.CharacterFragment"
+        android:label="@string/nav_characters"
+        tools:layout="@layout/fragment_character">
+        <action
+            android:id="@+id/action_characterFragment_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="shvyn22.myapplication.ui.episode.EpisodeFragment"
+        android:label="@string/nav_episodes"
+        tools:layout="@layout/fragment_episode" />
+    <fragment
+        android:id="@+id/quoteFragment"
+        android:name="shvyn22.myapplication.ui.quote.QuoteFragment"
+        android:label="@string/nav_quotes"
+        tools:layout="@layout/fragment_quotes" />
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="shvyn22.myapplication.ui.character.details.CharacterDetailsFragment"
+        android:label="@string/nav_details"
+        tools:layout="@layout/fragment_character_details" />
+</navigation>

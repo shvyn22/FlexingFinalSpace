@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FinalSpaceApplication</string>
+
+    <string name="nav_characters">Characters</string>
+    <string name="nav_episodes">Episodes</string>
+    <string name="nav_quotes">Quotes</string>
+    <string name="nav_details">Details</string>
+    <string name="text_species">Species: %1$s</string>
+    <string name="text_gender">Gender: %1$s</string>
+    <string name="text_hair">Hair color: %1$s</string>
+    <string name="text_origin">Origin: %1$s</string>
+    <string name="text_abilities">Abilities: %1$s</string>
+    <string name="text_alias">Alias: %1$s</string>
 </resources>

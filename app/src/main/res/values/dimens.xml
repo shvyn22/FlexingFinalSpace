@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Padding -->
+    <dimen name="padding_item">5dp</dimen>
+    <dimen name="padding_item_large">10dp</dimen>
+    <dimen name="padding_content">16dp</dimen>
+
+    <!-- Margin -->
+    <dimen name="margin_small">5dp</dimen>
+
+    <!-- Other dimens -->
+    <dimen name="card_elevation">4dp</dimen>
+</resources>
