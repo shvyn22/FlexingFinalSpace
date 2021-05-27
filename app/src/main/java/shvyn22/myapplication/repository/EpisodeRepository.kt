@@ -8,7 +8,9 @@ import shvyn22.myapplication.data.util.fromEpisodeDTOToModel
 import shvyn22.myapplication.util.Resource
 import shvyn22.myapplication.util.networkBoundResource
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class EpisodeRepository @Inject constructor(
     private val dao: EpisodeDao,
     private val api: ApiInterface

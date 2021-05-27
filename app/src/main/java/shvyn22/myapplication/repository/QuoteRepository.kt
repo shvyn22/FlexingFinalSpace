@@ -8,7 +8,9 @@ import shvyn22.myapplication.data.util.fromQuoteDTOToModel
 import shvyn22.myapplication.util.Resource
 import shvyn22.myapplication.util.networkBoundResource
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class QuoteRepository @Inject constructor(
     private val dao: QuoteDao,
     private val api: ApiInterface

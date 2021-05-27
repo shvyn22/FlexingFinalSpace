@@ -13,7 +13,7 @@ import javax.inject.Singleton
 class PreferencesManager @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
-    val prefs = dataStore.data.map {
+    val nightMode = dataStore.data.map {
         it[PreferencesKeys.NIGHT_MODE] ?: AppCompatDelegate.getDefaultNightMode()
     }
 

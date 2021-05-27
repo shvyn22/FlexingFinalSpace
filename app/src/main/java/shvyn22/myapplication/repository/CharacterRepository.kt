@@ -8,7 +8,9 @@ import shvyn22.myapplication.data.util.fromCharacterDTOToModel
 import shvyn22.myapplication.util.Resource
 import shvyn22.myapplication.util.networkBoundResource
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class CharacterRepository @Inject constructor(
     private val dao: CharacterDao,
     private val api: ApiInterface
