@@ -11,4 +11,6 @@
     <string name="text_origin">Origin: %1$s</string>
     <string name="text_abilities">Abilities: %1$s</string>
     <string name="text_alias">Alias: %1$s</string>
+    <string name="text_director">Director: %1$s</string>
+    <string name="text_writer">Writer: %1$s</string>
 </resources>

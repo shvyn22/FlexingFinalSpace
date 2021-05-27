@@ -1,10 +1,13 @@
 package shvyn22.myapplication.data.local.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "Episode")
+@Parcelize
 data class EpisodeModel(
     @PrimaryKey
     @ColumnInfo(name = "id")
@@ -24,4 +27,4 @@ data class EpisodeModel(
 
     @ColumnInfo(name = "imgURL")
     val imgURL: String
-)
+) : Parcelable

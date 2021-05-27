@@ -18,7 +18,11 @@
         android:id="@+id/episodeFragment"
         android:name="shvyn22.myapplication.ui.episode.EpisodeFragment"
         android:label="@string/nav_episodes"
-        tools:layout="@layout/fragment_episode" />
+        tools:layout="@layout/fragment_episode" >
+        <action
+            android:id="@+id/action_episodeFragment_to_episodeDetailsFragment"
+            app:destination="@id/episodeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/quoteFragment"
         android:name="shvyn22.myapplication.ui.quote.QuoteFragment"
@@ -28,5 +32,18 @@
         android:id="@+id/characterDetailsFragment"
         android:name="shvyn22.myapplication.ui.character.details.CharacterDetailsFragment"
         android:label="@string/nav_details"
-        tools:layout="@layout/fragment_character_details" />
+        tools:layout="@layout/fragment_character_details" >
+        <argument
+            android:name="character"
+            app:argType="shvyn22.myapplication.data.local.model.CharacterModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeDetailsFragment"
+        android:name="shvyn22.myapplication.ui.episode.details.EpisodeDetailsFragment"
+        android:label="fragment_episode_details"
+        tools:layout="@layout/fragment_episode_details" >
+        <argument
+            android:name="episode"
+            app:argType="shvyn22.myapplication.data.local.model.EpisodeModel" />
+    </fragment>
 </navigation>

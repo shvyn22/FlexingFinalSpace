@@ -13,9 +13,6 @@ interface CharacterDao: DaoInterface<CharacterModel> {
     @Query("SELECT * FROM Character")
     override fun getAll(): Flow<CharacterModel>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    override suspend fun insertAll(items: List<CharacterModel>)
-
     @Query("DELETE FROM Character")
     override suspend fun deleteAll()
 }
