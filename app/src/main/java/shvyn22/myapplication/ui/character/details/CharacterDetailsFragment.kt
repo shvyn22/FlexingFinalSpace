@@ -5,10 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
 import shvyn22.myapplication.R
 import shvyn22.myapplication.databinding.FragmentCharacterDetailsBinding
+import shvyn22.myapplication.util.defaultRequests
 
 @AndroidEntryPoint
 class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
@@ -24,9 +24,10 @@ class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
 
         binding.apply {
             Glide.with(view)
-                    .load(character.imgURL)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(ivImage)
+                .load(character.imgURL)
+                .defaultRequests()
+                .into(ivImage)
+
             ivStatus.setImageResource(
                     when {
                         listOf("Alive", "Operational").any { it in character.status } ->
@@ -35,6 +36,7 @@ class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
                         else -> R.drawable.ic_unknown
                     }
             )
+
             tvName.text = character.name
             tvAlias.text = getString(
                     R.string.text_alias,

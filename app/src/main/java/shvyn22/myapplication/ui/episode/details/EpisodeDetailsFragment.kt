@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import shvyn22.myapplication.R
 import shvyn22.myapplication.databinding.FragmentEpisodeDetailsBinding
+import shvyn22.myapplication.util.defaultRequests
 
 class EpisodeDetailsFragment: BottomSheetDialogFragment() {
 
@@ -32,9 +32,10 @@ class EpisodeDetailsFragment: BottomSheetDialogFragment() {
 
         binding.apply {
             Glide.with(view)
-                    .load(episode.imgURL)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(ivImage)
+                .load(episode.imgURL)
+                .defaultRequests()
+                .into(ivImage)
+
             tvName.text = episode.name
             tvAirDate.text = episode.airDate
             tvDirector.text = getString(R.string.text_director, episode.director)

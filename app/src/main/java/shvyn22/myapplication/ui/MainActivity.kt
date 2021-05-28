@@ -3,6 +3,7 @@ package shvyn22.myapplication.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Lifecycle
@@ -57,6 +58,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_mode) viewModel.onToggleModeIcon()
         return true
     }
 
