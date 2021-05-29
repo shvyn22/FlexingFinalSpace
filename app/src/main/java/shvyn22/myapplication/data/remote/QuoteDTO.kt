@@ -7,11 +7,11 @@ data class QuoteDTO(
     val id: Int,
 
     @SerializedName("quote")
-    val quote: String,
+    val quote: String?,
 
     @SerializedName("by")
-    val author: String,
+    val author: String?,
 
     @SerializedName("image")
-    val imgURL: String
+    val imgURL: String?
 )

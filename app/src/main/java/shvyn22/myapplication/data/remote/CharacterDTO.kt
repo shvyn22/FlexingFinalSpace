@@ -7,29 +7,29 @@ data class CharacterDTO(
     val id: Int,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("status")
-    val status: String,
+    val status: String?,
 
     @SerializedName("species")
-    val species: String,
+    val species: String?,
 
     @SerializedName("gender")
-    val gender: String,
+    val gender: String?,
 
     @SerializedName("hair")
-    val hair: String,
+    val hair: String?,
 
     @SerializedName("origin")
-    val origin: String,
+    val origin: String?,
 
     @SerializedName("abilities")
-    val abilities: List<String>,
+    val abilities: List<String>?,
 
     @SerializedName("alias")
-    val alias: List<String>,
+    val alias: List<String>?,
 
     @SerializedName("img_url")
-    val imgURL: String
+    val imgURL: String?
 )

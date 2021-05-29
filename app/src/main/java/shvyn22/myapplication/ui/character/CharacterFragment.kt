@@ -2,16 +2,16 @@ package shvyn22.myapplication.ui.character
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import shvyn22.myapplication.R
 import shvyn22.myapplication.databinding.FragmentCharacterBinding
+import shvyn22.myapplication.util.Resource
+import shvyn22.myapplication.util.collectOnLifecycle
+import shvyn22.myapplication.util.showError
 
 @AndroidEntryPoint
 class CharacterFragment: Fragment(R.layout.fragment_character) {
@@ -23,13 +23,23 @@ class CharacterFragment: Fragment(R.layout.fragment_character) {
 
         val binding = FragmentCharacterBinding.bind(view)
 
-        binding.apply {
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                    viewModel.items.collect {
+        val characterAdapter = CharacterAdapter {
+            findNavController()
+                .navigate(
+                    CharacterFragmentDirections.actionNavigateToCharacterDetails(it)
+                )
+        }
 
-                    }
+        binding.apply {
+            rvCharacters.adapter = characterAdapter
+
+            viewModel.items.collectOnLifecycle(viewLifecycleOwner) {
+                if (it is Resource.Success) characterAdapter.updateAndNotify(it.data)
+                else if (it is Resource.Error) {
+                    view.showError()
+                    characterAdapter.updateAndNotify(it.data)
                 }
+                pbLoading.isVisible = it is Resource.Loading
             }
         }
     }

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
-inline fun <reified Model, DTO> networkBoundResource(
+inline fun <Model, DTO> networkBoundResource(
     crossinline query: () -> Flow<Model>,
     crossinline fetch: suspend () -> DTO,
     crossinline saveFetchResult: suspend (DTO) -> Unit

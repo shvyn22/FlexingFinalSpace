@@ -17,8 +17,8 @@ class CharacterViewModel @Inject constructor(
     private val repository: CharacterRepository
 ): ViewModel() {
 
-    private val _items = MutableStateFlow<Resource<CharacterModel>>(Resource.Loading())
-    val items: StateFlow<Resource<CharacterModel>> get() = _items
+    private val _items = MutableStateFlow<Resource<List<CharacterModel>>>(Resource.Loading())
+    val items: StateFlow<Resource<List<CharacterModel>>> get() = _items
 
     init {
         viewModelScope.launch {

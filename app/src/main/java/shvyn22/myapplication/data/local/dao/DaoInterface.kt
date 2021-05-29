@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface DaoInterface<T> {
 
-    fun getAll(): Flow<T>
+    fun getAll(): Flow<List<T>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(items: List<T>)

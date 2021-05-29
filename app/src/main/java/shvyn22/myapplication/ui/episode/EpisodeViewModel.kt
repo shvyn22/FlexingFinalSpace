@@ -17,8 +17,8 @@ class EpisodeViewModel @Inject constructor(
     private val repository: EpisodeRepository
 ): ViewModel() {
 
-    private val _items = MutableStateFlow<Resource<EpisodeModel>>(Resource.Loading())
-    val items: StateFlow<Resource<EpisodeModel>> get() = _items
+    private val _items = MutableStateFlow<Resource<List<EpisodeModel>>>(Resource.Loading())
+    val items: StateFlow<Resource<List<EpisodeModel>>> get() = _items
 
     init {
         viewModelScope.launch {

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Text size -->
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_default">16sp</dimen>
+
     <!-- Padding -->
     <dimen name="padding_item">5dp</dimen>
     <dimen name="padding_item_large">10dp</dimen>

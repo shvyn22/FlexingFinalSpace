@@ -14,9 +14,9 @@ import javax.inject.Singleton
 class CharacterRepository @Inject constructor(
     private val dao: CharacterDao,
     private val api: ApiInterface
-): Repository<Resource<CharacterModel>> {
+): Repository<Resource<List<CharacterModel>>> {
 
-    override fun getItems(): Flow<Resource<CharacterModel>> =
+    override fun getItems(): Flow<Resource<List<CharacterModel>>> =
             networkBoundResource(
                 query = { dao.getAll() },
                 fetch = { api.getCharacters() },

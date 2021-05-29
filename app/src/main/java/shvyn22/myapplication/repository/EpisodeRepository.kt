@@ -14,17 +14,17 @@ import javax.inject.Singleton
 class EpisodeRepository @Inject constructor(
     private val dao: EpisodeDao,
     private val api: ApiInterface
-): Repository<Resource<EpisodeModel>> {
+): Repository<Resource<List<EpisodeModel>>> {
 
-    override fun getItems(): Flow<Resource<EpisodeModel>> =
+    override fun getItems(): Flow<Resource<List<EpisodeModel>>> =
             networkBoundResource(
-                    query = { dao.getAll() },
-                    fetch = { api.getEpisodes() },
-                    saveFetchResult = {
-                        dao.deleteAll()
-                        dao.insertAll( it.map { dto ->
-                            fromEpisodeDTOToModel(dto)
-                        })
-                    }
+                query = { dao.getAll() },
+                fetch = { api.getEpisodes() },
+                saveFetchResult = {
+                    dao.deleteAll()
+                    dao.insertAll( it.map { dto ->
+                        fromEpisodeDTOToModel(dto)
+                    })
+                }
             )
 }

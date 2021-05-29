@@ -14,17 +14,17 @@ import javax.inject.Singleton
 class QuoteRepository @Inject constructor(
     private val dao: QuoteDao,
     private val api: ApiInterface
-): Repository<Resource<QuoteModel>> {
+): Repository<Resource<List<QuoteModel>>> {
 
-    override fun getItems(): Flow<Resource<QuoteModel>> =
+    override fun getItems(): Flow<Resource<List<QuoteModel>>> =
             networkBoundResource(
-                    query = { dao.getAll() },
-                    fetch = { api.getQuotes() },
-                    saveFetchResult = {
-                        dao.deleteAll()
-                        dao.insertAll( it.map { dto ->
-                            fromQuoteDTOToModel(dto)
-                        })
-                    }
+                query = { dao.getAll() },
+                fetch = { api.getQuotes() },
+                saveFetchResult = {
+                    dao.deleteAll()
+                    dao.insertAll( it.map { dto ->
+                        fromQuoteDTOToModel(dto)
+                    })
+                }
             )
 }

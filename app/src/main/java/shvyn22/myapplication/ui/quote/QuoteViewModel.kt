@@ -17,8 +17,8 @@ class QuoteViewModel @Inject constructor(
     private val repository: QuoteRepository
 ) : ViewModel() {
 
-    private val _items = MutableStateFlow<Resource<QuoteModel>>(Resource.Loading())
-    val items: StateFlow<Resource<QuoteModel>> get() = _items
+    private val _items = MutableStateFlow<Resource<List<QuoteModel>>>(Resource.Loading())
+    val items: StateFlow<Resource<List<QuoteModel>>> get() = _items
 
     init {
         viewModelScope.launch {

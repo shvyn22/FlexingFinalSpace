@@ -51,6 +51,7 @@ class CharacterAdapter(
                     .load(item.imgURL)
                     .defaultRequests()
                     .into(ivImage)
+
                 tvName.text = item.name
             }
         }

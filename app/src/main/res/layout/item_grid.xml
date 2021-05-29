@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginVertical="@dimen/padding_item"
-    android:layout_marginHorizontal="@dimen/padding_item"
-    android:padding="@dimen/padding_item"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/padding_item"
+    android:layout_marginVertical="@dimen/padding_item"
+    android:padding="@dimen/padding_item">
 
     <ImageView
         android:id="@+id/iv_image"

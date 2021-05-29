@@ -7,17 +7,17 @@ data class EpisodeDTO(
     val id: Int,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("air_date")
-    val airDate: String,
+    val airDate: String?,
 
     @SerializedName("director")
-    val director: String,
+    val director: String?,
 
     @SerializedName("writer")
-    val writer: String,
+    val writer: String?,
 
     @SerializedName("img_url")
-    val imgURL: String
+    val imgURL: String?
 )
