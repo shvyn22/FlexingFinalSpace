@@ -37,7 +37,7 @@
             android:name="character"
             app:argType="shvyn22.myapplication.data.local.model.CharacterModel" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/episodeDetailsFragment"
         android:name="shvyn22.myapplication.ui.episode.details.EpisodeDetailsFragment"
         android:label="fragment_episode_details"
@@ -45,5 +45,5 @@
         <argument
             android:name="episode"
             app:argType="shvyn22.myapplication.data.local.model.EpisodeModel" />
-    </fragment>
+    </dialog>
 </navigation>

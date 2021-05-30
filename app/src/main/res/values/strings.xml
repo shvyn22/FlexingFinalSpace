@@ -15,5 +15,5 @@
     <string name="text_director">Director: %1$s</string>
     <string name="text_writer">Writer: %1$s</string>
 
-    <string name="text_error">Error fetching data</string>
+    <string name="text_error">Error fetching data: %1$s</string>
 </resources>

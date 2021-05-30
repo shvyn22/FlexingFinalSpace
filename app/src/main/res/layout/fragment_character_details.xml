@@ -23,7 +23,8 @@
         android:layout_height="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_image"
-        tools:src="@drawable/ic_dead" />
+        tools:src="@drawable/ic_dead"
+        app:tint="@color/white50" />
 
     <TextView
         android:id="@+id/tv_name"

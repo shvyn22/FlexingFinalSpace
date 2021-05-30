@@ -30,7 +30,7 @@ class QuoteFragment: Fragment(R.layout.fragment_quote) {
             viewModel.items.collectOnLifecycle(viewLifecycleOwner) {
                 if (it is Resource.Success) quoteAdapter.updateAndNotify(it.data)
                 else if (it is Resource.Error) {
-                    view.showError()
+                    view.showError(it.error)
                     quoteAdapter.updateAndNotify(it.data)
                 }
                 pbLoading.isVisible = it is Resource.Loading

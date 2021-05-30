@@ -32,8 +32,12 @@ fun <T> Flow<T>.collectOnLifecycle(
     }
 }
 
-fun View.showError() {
+fun View.showError(e: Throwable) {
     Snackbar
-        .make(this, context.getString(R.string.text_error), Snackbar.LENGTH_LONG)
+        .make(
+            this,
+            context.getString(R.string.text_error, e.localizedMessage),
+            Snackbar.LENGTH_LONG
+        )
         .show()
 }

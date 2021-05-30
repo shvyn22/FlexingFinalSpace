@@ -36,7 +36,7 @@ class CharacterFragment: Fragment(R.layout.fragment_character) {
             viewModel.items.collectOnLifecycle(viewLifecycleOwner) {
                 if (it is Resource.Success) characterAdapter.updateAndNotify(it.data)
                 else if (it is Resource.Error) {
-                    view.showError()
+                    view.showError(it.error)
                     characterAdapter.updateAndNotify(it.data)
                 }
                 pbLoading.isVisible = it is Resource.Loading
