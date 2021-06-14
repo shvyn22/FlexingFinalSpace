@@ -60,10 +60,9 @@ dependencies {
     // Fragment
     implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
 
-    // Lifecycle + ViewModel & LiveData
+    // Lifecycle + ViewModel
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "android.arch.lifecycle:common-java8:$lifecycleVersion"
 
     // Navigation

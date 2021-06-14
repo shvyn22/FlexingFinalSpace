@@ -33,13 +33,14 @@ class EpisodeFragment: Fragment(R.layout.fragment_episode) {
         binding.apply {
             rvEpisodes.adapter = episodeAdapter
 
-            viewModel.items.collectOnLifecycle(viewLifecycleOwner) {
-                if (it is Resource.Success) episodeAdapter.updateAndNotify(it.data)
-                else if (it is Resource.Error) {
-                    view.showError(it.error)
-                    episodeAdapter.updateAndNotify(it.data)
+            viewModel.items.collectOnLifecycle(viewLifecycleOwner) { resource ->
+                if (resource is Resource.Success)
+                    episodeAdapter.updateAndNotify(resource.data)
+                else if (resource is Resource.Error) {
+                    view.showError(resource.error)
+                    episodeAdapter.updateAndNotify(resource.data)
                 }
-                pbLoading.isVisible = it is Resource.Loading
+                pbLoading.isVisible = resource is Resource.Loading
             }
         }
     }

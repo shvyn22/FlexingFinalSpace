@@ -33,13 +33,14 @@ class CharacterFragment: Fragment(R.layout.fragment_character) {
         binding.apply {
             rvCharacters.adapter = characterAdapter
 
-            viewModel.items.collectOnLifecycle(viewLifecycleOwner) {
-                if (it is Resource.Success) characterAdapter.updateAndNotify(it.data)
-                else if (it is Resource.Error) {
-                    view.showError(it.error)
-                    characterAdapter.updateAndNotify(it.data)
+            viewModel.items.collectOnLifecycle(viewLifecycleOwner) { resource ->
+                if (resource is Resource.Success)
+                    characterAdapter.updateAndNotify(resource.data)
+                else if (resource is Resource.Error) {
+                    view.showError(resource.error)
+                    characterAdapter.updateAndNotify(resource.data)
                 }
-                pbLoading.isVisible = it is Resource.Loading
+                pbLoading.isVisible = resource is Resource.Loading
             }
         }
     }

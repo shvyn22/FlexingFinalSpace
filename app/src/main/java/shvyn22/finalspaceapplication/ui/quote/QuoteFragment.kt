@@ -27,13 +27,14 @@ class QuoteFragment: Fragment(R.layout.fragment_quote) {
         binding.apply {
             rvQuotes.adapter = quoteAdapter
 
-            viewModel.items.collectOnLifecycle(viewLifecycleOwner) {
-                if (it is Resource.Success) quoteAdapter.updateAndNotify(it.data)
-                else if (it is Resource.Error) {
-                    view.showError(it.error)
-                    quoteAdapter.updateAndNotify(it.data)
+            viewModel.items.collectOnLifecycle(viewLifecycleOwner) { resource ->
+                if (resource is Resource.Success)
+                    quoteAdapter.updateAndNotify(resource.data)
+                else if (resource is Resource.Error) {
+                    view.showError(resource.error)
+                    quoteAdapter.updateAndNotify(resource.data)
                 }
-                pbLoading.isVisible = it is Resource.Loading
+                pbLoading.isVisible = resource is Resource.Loading
             }
         }
     }
