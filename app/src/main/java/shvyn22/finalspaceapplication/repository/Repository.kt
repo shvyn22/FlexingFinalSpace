@@ -1,8 +1,9 @@
 package shvyn22.finalspaceapplication.repository
 
 import kotlinx.coroutines.flow.Flow
+import shvyn22.finalspaceapplication.util.Resource
 
-interface Repository<out T> {
+interface Repository<T> {
 
-    fun getItems(): Flow<T>
+    fun getItems(): Flow<Resource<List<T>>>
 }

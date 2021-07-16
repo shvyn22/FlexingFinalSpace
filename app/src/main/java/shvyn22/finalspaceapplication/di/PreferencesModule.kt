@@ -9,6 +9,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import shvyn22.finalspaceapplication.data.preferences.PreferencesManager
+import shvyn22.finalspaceapplication.data.preferences.PreferencesManagerImpl
 import javax.inject.Singleton
 
 @Module
@@ -23,4 +25,10 @@ object PreferencesModule {
                 app.preferencesDataStoreFile("preferences")
             }
         )
+
+    @Singleton
+    @Provides
+    fun providePreferencesManager(
+        dataStore: DataStore<Preferences>
+    ): PreferencesManager = PreferencesManagerImpl(dataStore)
 }

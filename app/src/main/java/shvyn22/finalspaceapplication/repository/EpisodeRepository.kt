@@ -7,24 +7,21 @@ import shvyn22.finalspaceapplication.data.local.model.EpisodeModel
 import shvyn22.finalspaceapplication.data.util.fromEpisodeDTOToModel
 import shvyn22.finalspaceapplication.util.Resource
 import shvyn22.finalspaceapplication.util.networkBoundResource
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class EpisodeRepository @Inject constructor(
+class EpisodeRepository(
     private val dao: EpisodeDao,
     private val api: ApiInterface
-): Repository<Resource<List<EpisodeModel>>> {
+) : Repository<EpisodeModel> {
 
     override fun getItems(): Flow<Resource<List<EpisodeModel>>> =
-            networkBoundResource(
-                query = { dao.getAll() },
-                fetch = { api.getEpisodes() },
-                saveFetchResult = {
-                    dao.deleteAll()
-                    dao.insertAll( it.map { dto ->
-                        fromEpisodeDTOToModel(dto)
-                    })
-                }
-            )
+        networkBoundResource(
+            query = { dao.getAll() },
+            fetch = { api.getEpisodes() },
+            saveFetchResult = {
+                dao.deleteAll()
+                dao.insertAll(it.map { dto ->
+                    fromEpisodeDTOToModel(dto)
+                })
+            }
+        )
 }
