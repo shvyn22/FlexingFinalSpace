@@ -17,7 +17,7 @@ import shvyn22.finalspaceapplication.data.util.fromCharacterDTOToModel
 import shvyn22.finalspaceapplication.util.character1
 import shvyn22.finalspaceapplication.util.character2
 import shvyn22.finalspaceapplication.util.launchFragmentInHiltContainer
-import shvyn22.finalspaceapplication.util.withDrawable
+import shvyn22.finalspaceapplication.util.withImageDrawable
 
 @HiltAndroidTest
 class CharacterDetailsFragmentTest {
@@ -70,9 +70,8 @@ class CharacterDetailsFragmentTest {
         onView(withId(R.id.iv_status))
             .check(
                 matches(
-                    withDrawable(
-                        R.drawable.ic_alive,
-                        R.color.black900
+                    withImageDrawable(
+                        R.drawable.ic_alive
                     )
                 )
             )
@@ -139,9 +138,8 @@ class CharacterDetailsFragmentTest {
         onView(withId(R.id.iv_status))
             .check(
                 matches(
-                    withDrawable(
-                        R.drawable.ic_dead,
-                        R.color.black900
+                    withImageDrawable(
+                        R.drawable.ic_dead
                     )
                 )
             )
@@ -208,9 +206,8 @@ class CharacterDetailsFragmentTest {
         onView(withId(R.id.iv_status))
             .check(
                 matches(
-                    withDrawable(
-                        R.drawable.ic_unknown,
-                        R.color.black900
+                    withImageDrawable(
+                        R.drawable.ic_unknown
                     )
                 )
             )

@@ -1,7 +1,6 @@
 package shvyn22.finalspaceapplication.ui
 
-import android.content.Context
-import androidx.test.core.app.ApplicationProvider
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -10,16 +9,16 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import shvyn22.finalspaceapplication.R
 import shvyn22.finalspaceapplication.api.FakeApiInterface
+import shvyn22.finalspaceapplication.data.preferences.PreferencesManager
+import shvyn22.finalspaceapplication.di.tearDownPreferencesDependencies
 import shvyn22.finalspaceapplication.util.*
-import shvyn22.finalspaceapplication.util.RecyclerViewItemCountAssertion.Companion.withItemCount
-import java.io.File
 import javax.inject.Inject
 
 @HiltAndroidTest
@@ -34,6 +33,9 @@ class MainActivityTest {
     @Inject
     lateinit var scope: CoroutineScope
 
+    @Inject
+    lateinit var preferences: PreferencesManager
+
     @Before
     fun init() {
         hiltRule.inject()
@@ -41,14 +43,7 @@ class MainActivityTest {
 
     @After
     fun tearDown() {
-        File(
-            ApplicationProvider
-                .getApplicationContext<Context>()
-                .filesDir,
-            TEST_PREFERENCES_FILENAME
-        ).deleteRecursively()
-
-        scope.cancel()
+        tearDownPreferencesDependencies(scope)
     }
 
     @Test
@@ -131,38 +126,23 @@ class MainActivityTest {
     fun toggleModeIcon_ValidStatesAreDisplayed() {
         launchActivity<MainActivity>()
 
+        runBlocking {
+            preferences.editNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         onView(withId(R.id.menu_mode))
-            .check(
-                matches(
-                    withDrawable(
-                        R.drawable.ic_night_mode
-                    )
-                )
-            )
+            .check(withItemTitle(R.string.mode_night))
 
         onView(withId(R.id.menu_mode))
             .perform(click())
 
         onView(withId(R.id.menu_mode))
-            .check(
-                matches(
-                    withDrawable(
-                        R.drawable.ic_light_mode
-                    )
-                )
-            )
+            .check(withItemTitle(R.string.mode_light))
 
         onView(withId(R.id.menu_mode))
             .perform(click())
 
         onView(withId(R.id.menu_mode))
-            .check(
-                matches(
-                    withDrawable(
-                        R.drawable.ic_night_mode
-                    )
-                )
-            )
-
+            .check(withItemTitle(R.string.mode_night))
     }
 }

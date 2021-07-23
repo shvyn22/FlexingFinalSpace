@@ -29,4 +29,26 @@ class ConverterTest {
             `is`(fromCharacterDTOToModel(character1).alias)
         )
     }
+
+    @Test
+    fun convertFromEmptyListToString_ReturnsEmptyString() {
+        val result = Converter()
+            .fromListToString(listOf())
+
+        assertThat(
+            result,
+            `is`("")
+        )
+    }
+
+    @Test
+    fun convertFromEmptyStringToList_ReturnsEmptyList() {
+        val result = Converter()
+            .fromStringToList("")
+
+        assertThat(
+            result,
+            `is`(emptyList())
+        )
+    }
 }

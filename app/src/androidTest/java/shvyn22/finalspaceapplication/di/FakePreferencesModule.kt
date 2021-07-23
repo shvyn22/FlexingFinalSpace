@@ -1,10 +1,12 @@
 package shvyn22.finalspaceapplication.di
 
 import android.app.Application
+import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
+import androidx.test.core.app.ApplicationProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
@@ -12,10 +14,12 @@ import dagger.hilt.testing.TestInstallIn
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import shvyn22.finalspaceapplication.data.preferences.PreferencesManager
 import shvyn22.finalspaceapplication.data.preferences.PreferencesManagerImpl
 import shvyn22.finalspaceapplication.util.TEST_PREFERENCES_FILENAME
+import java.io.File
 import javax.inject.Singleton
 
 @Module
@@ -46,4 +50,17 @@ object FakePreferencesModule {
     fun providePreferencesManager(
         dataStore: DataStore<Preferences>
     ): PreferencesManager = PreferencesManagerImpl(dataStore)
+}
+
+fun tearDownPreferencesDependencies(
+    scope: CoroutineScope
+) {
+    File(
+        ApplicationProvider
+            .getApplicationContext<Context>()
+            .filesDir,
+        TEST_PREFERENCES_FILENAME
+    ).deleteRecursively()
+
+    scope.cancel()
 }

@@ -33,7 +33,7 @@ class CharacterViewModelTest {
 
     @Before
     fun setup() {
-        api = FakeApiInterface(false)
+        api = FakeApiInterface()
         viewModel = CharacterViewModel(FakeCharacterRepository(api = api))
     }
 
@@ -43,7 +43,10 @@ class CharacterViewModelTest {
 
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<CharacterModel>>).data,
@@ -57,7 +60,10 @@ class CharacterViewModelTest {
 
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<CharacterModel>>).data,
@@ -69,7 +75,10 @@ class CharacterViewModelTest {
     fun populateWithNoItems_ReturnsNoCharacter() = runBlocking {
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<CharacterModel>>).data,

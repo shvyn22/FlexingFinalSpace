@@ -33,7 +33,7 @@ class EpisodeViewModelTest {
 
     @Before
     fun setup() {
-        api = FakeApiInterface(false)
+        api = FakeApiInterface()
         viewModel = EpisodeViewModel(FakeEpisodeRepository(api = api))
     }
 
@@ -43,7 +43,10 @@ class EpisodeViewModelTest {
 
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<EpisodeModel>>).data,
@@ -57,7 +60,10 @@ class EpisodeViewModelTest {
 
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<EpisodeModel>>).data,
@@ -69,7 +75,10 @@ class EpisodeViewModelTest {
     fun populateWithNoItems_ReturnsNoEpisode() = runBlocking {
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<EpisodeModel>>).data,

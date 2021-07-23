@@ -34,7 +34,7 @@ class QuoteViewModelTest {
 
     @Before
     fun setup() {
-        api = FakeApiInterface(false)
+        api = FakeApiInterface()
         viewModel = QuoteViewModel(FakeQuoteRepository(api = api))
     }
 
@@ -44,7 +44,10 @@ class QuoteViewModelTest {
 
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<QuoteModel>>).data,
@@ -58,7 +61,10 @@ class QuoteViewModelTest {
 
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<QuoteModel>>).data,
@@ -70,7 +76,10 @@ class QuoteViewModelTest {
     fun populateWithNoItems_ReturnsNoQuote() = runBlocking {
         val items = viewModel.items.drop(1).first()
 
-        assertThat(items, `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            items,
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (items as Resource.Success<List<QuoteModel>>).data,

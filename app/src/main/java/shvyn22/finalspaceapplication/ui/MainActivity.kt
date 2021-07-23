@@ -45,10 +45,16 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.nightMode.collectOnLifecycle(this) {
             AppCompatDelegate.setDefaultNightMode(it)
-            menu?.findItem(R.id.menu_mode)?.setIcon(
-                if (it == AppCompatDelegate.MODE_NIGHT_YES) R.drawable.ic_light_mode
-                else R.drawable.ic_night_mode
-            )
+            menu?.findItem(R.id.menu_mode)?.apply {
+                if (it == AppCompatDelegate.MODE_NIGHT_YES) {
+                    setIcon(R.drawable.ic_light_mode)
+                    setTitle(R.string.mode_light)
+                }
+                else {
+                    setIcon(R.drawable.ic_night_mode)
+                    setTitle(R.string.mode_night)
+                }
+            }
         }
 
         return true

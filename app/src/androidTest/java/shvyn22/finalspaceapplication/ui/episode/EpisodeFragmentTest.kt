@@ -1,6 +1,8 @@
 package shvyn22.finalspaceapplication.ui.episode
 
+import android.content.Context
 import androidx.navigation.NavController
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -19,10 +21,10 @@ import shvyn22.finalspaceapplication.R
 import shvyn22.finalspaceapplication.api.FakeApiInterface
 import shvyn22.finalspaceapplication.data.local.dao.EpisodeDao
 import shvyn22.finalspaceapplication.data.util.fromEpisodeDTOToModel
-import shvyn22.finalspaceapplication.util.RecyclerViewItemCountAssertion.Companion.withItemCount
 import shvyn22.finalspaceapplication.util.episode1
 import shvyn22.finalspaceapplication.util.episodes
 import shvyn22.finalspaceapplication.util.launchFragmentInHiltContainer
+import shvyn22.finalspaceapplication.util.withItemCount
 import javax.inject.Inject
 
 @HiltAndroidTest
@@ -109,7 +111,15 @@ class EpisodeFragmentTest {
             .check(matches(isDisplayed()))
 
         onView(withId(com.google.android.material.R.id.snackbar_text))
-            .check(matches(withText("Error fetching data: null")))
+            .check(
+                matches(
+                    withText(
+                        ApplicationProvider.getApplicationContext<Context>().getString(
+                            R.string.text_error, "null"
+                        )
+                    )
+                )
+            )
     }
 
     @Test
@@ -125,7 +135,15 @@ class EpisodeFragmentTest {
             .check(withItemCount(0))
 
         onView(withId(com.google.android.material.R.id.snackbar_text))
-            .check(matches(withText("Error fetching data: null")))
+            .check(
+                matches(
+                    withText(
+                        ApplicationProvider.getApplicationContext<Context>().getString(
+                            R.string.text_error, "null"
+                        )
+                    )
+                )
+            )
     }
 
     @Test

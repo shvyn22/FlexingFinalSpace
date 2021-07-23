@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">FinalSpaceApplication</string>
 
-    <string name="menu_mode">App mode</string>
+    <string name="mode_light">Light Mode</string>
+    <string name="mode_night">Night Mode</string>
     <string name="nav_characters">Characters</string>
     <string name="nav_episodes">Episodes</string>
     <string name="nav_quotes">Quotes</string>

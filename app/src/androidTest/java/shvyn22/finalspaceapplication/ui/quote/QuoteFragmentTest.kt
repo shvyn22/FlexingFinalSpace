@@ -1,5 +1,7 @@
 package shvyn22.finalspaceapplication.ui.quote
 
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -14,11 +16,7 @@ import shvyn22.finalspaceapplication.R
 import shvyn22.finalspaceapplication.api.FakeApiInterface
 import shvyn22.finalspaceapplication.data.local.dao.QuoteDao
 import shvyn22.finalspaceapplication.data.util.fromQuoteDTOToModel
-import shvyn22.finalspaceapplication.util.RecyclerViewItemCountAssertion.Companion.withItemCount
-import shvyn22.finalspaceapplication.util.launchFragmentInHiltContainer
-import shvyn22.finalspaceapplication.util.quote1
-import shvyn22.finalspaceapplication.util.quote2
-import shvyn22.finalspaceapplication.util.quotes
+import shvyn22.finalspaceapplication.util.*
 import javax.inject.Inject
 
 @HiltAndroidTest
@@ -105,7 +103,15 @@ class QuoteFragmentTest {
             .check(matches(isDisplayed()))
 
         onView(withId(com.google.android.material.R.id.snackbar_text))
-            .check(matches(withText("Error fetching data: null")))
+            .check(
+                matches(
+                    withText(
+                        ApplicationProvider.getApplicationContext<Context>().getString(
+                            R.string.text_error, "null"
+                        )
+                    )
+                )
+            )
     }
 
     @Test
@@ -121,6 +127,14 @@ class QuoteFragmentTest {
             .check(withItemCount(0))
 
         onView(withId(com.google.android.material.R.id.snackbar_text))
-            .check(matches(withText("Error fetching data: null")))
+            .check(
+                matches(
+                    withText(
+                        ApplicationProvider.getApplicationContext<Context>().getString(
+                            R.string.text_error, "null"
+                        )
+                    )
+                )
+            )
     }
 }

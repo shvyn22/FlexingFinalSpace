@@ -1,13 +1,9 @@
 package shvyn22.finalspaceapplication.data.preferences
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.test.core.app.ApplicationProvider
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
@@ -16,11 +12,9 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import shvyn22.finalspaceapplication.util.TEST_PREFERENCES_FILENAME
-import java.io.File
+import shvyn22.finalspaceapplication.di.tearDownPreferencesDependencies
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 @HiltAndroidTest
 class PreferencesManagerTest {
 
@@ -40,14 +34,7 @@ class PreferencesManagerTest {
 
     @After
     fun tearDown() {
-        File(
-            ApplicationProvider
-                .getApplicationContext<Context>()
-                .filesDir,
-            TEST_PREFERENCES_FILENAME
-        ).deleteRecursively()
-
-        scope.cancel()
+        tearDownPreferencesDependencies(scope)
     }
 
     @Test
@@ -57,7 +44,10 @@ class PreferencesManagerTest {
 
         val nightMode = preferencesManager.nightMode.first()
 
-        assertThat(nightMode, `is`(AppCompatDelegate.MODE_NIGHT_YES))
+        assertThat(
+            nightMode,
+            `is`(AppCompatDelegate.MODE_NIGHT_YES)
+        )
     }
 
     @Test
@@ -67,12 +57,18 @@ class PreferencesManagerTest {
 
         val initialMode = preferencesManager.nightMode.first()
 
-        assertThat(initialMode, `is`(AppCompatDelegate.MODE_NIGHT_NO))
+        assertThat(
+            initialMode,
+            `is`(AppCompatDelegate.MODE_NIGHT_NO)
+        )
 
         preferencesManager.editNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         val afterChangeMode = preferencesManager.nightMode.first()
 
-        assertThat(afterChangeMode, `is`(AppCompatDelegate.MODE_NIGHT_YES))
+        assertThat(
+            afterChangeMode,
+            `is`(AppCompatDelegate.MODE_NIGHT_YES)
+        )
     }
 }

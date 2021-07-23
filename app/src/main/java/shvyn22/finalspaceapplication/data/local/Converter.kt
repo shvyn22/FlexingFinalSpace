@@ -11,7 +11,8 @@ class Converter {
 
     @TypeConverter
     fun fromStringToList(string: String): List<String> {
-        return string.split(", ")
+        return if (string.isEmpty()) return emptyList()
+        else string.split(", ")
     }
 }
 

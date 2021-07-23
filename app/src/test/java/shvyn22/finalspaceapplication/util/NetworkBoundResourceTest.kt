@@ -41,9 +41,15 @@ class NetworkBoundResourceTest {
             }
         ).take(2).toList()
 
-        assertThat(result[0], `is`(instanceOf(Resource.Loading::class.java)))
+        assertThat(
+            result[0],
+            `is`(instanceOf(Resource.Loading::class.java))
+        )
 
-        assertThat(result[1], `is`(instanceOf(Resource.Success::class.java)))
+        assertThat(
+            result[1],
+            `is`(instanceOf(Resource.Success::class.java))
+        )
 
         assertThat(
             (result[1] as Resource.Success<List<CharacterModel>>).data,
@@ -67,9 +73,15 @@ class NetworkBoundResourceTest {
             }
         ).take(2).toList()
 
-        assertThat(result[0], `is`(instanceOf(Resource.Loading::class.java)))
+        assertThat(
+            result[0],
+            `is`(instanceOf(Resource.Loading::class.java))
+        )
 
-        assertThat(result[1], `is`(instanceOf(Resource.Error::class.java)))
+        assertThat(
+            result[1],
+            `is`(instanceOf(Resource.Error::class.java))
+        )
 
         assertThat(
             (result[1] as Resource.Error<List<CharacterModel>>).data,
