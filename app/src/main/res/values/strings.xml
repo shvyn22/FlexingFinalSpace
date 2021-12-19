@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalSpaceApplication</string>
+    <string name="app_name">FlexingFinalSpace</string>
 
     <string name="mode_light">Light Mode</string>
     <string name="mode_night">Night Mode</string>
