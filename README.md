@@ -22,29 +22,29 @@ This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and pro
 ## Tech stack and concepts
 * **[Kotlin](https://kotlinlang.org/)** as programming language.
 * **[Kotlin coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/)** as framework for asynchronous jobs.
-  1. **Flow**(*StateFlow*) as dataholder for UI layer.  
+  * **Flow**(*StateFlow*) as dataholder for UI layer.  
 * Single activity support.
-  1. **[Fragments](https://developer.android.com/jetpack/androidx/releases/fragment)**.
-  2. **[Navigation components](https://developer.android.com/jetpack/androidx/releases/navigation)**.
-* Modern UI toolkit
-  * **[Material components](https://material.io/develop/android)**
-  * **ViewBinding** for binding .xml views to objects in Activities and Fragments
+  * **[Fragments](https://developer.android.com/jetpack/androidx/releases/fragment)**.
+  * **[Navigation components](https://developer.android.com/jetpack/androidx/releases/navigation)**.
+* Modern UI toolkit.
+  * **[Material components](https://material.io/develop/android)**.
+  * **ViewBinding** for binding .xml views to objects in Activities and Fragments.
 * Api-based remote data layer.
-  1. **[Retrofit](https://square.github.io/retrofit/)** for network queries.
-  2. **[GSON](https://github.com/google/gson)** for parsing JSON.\
+  * **[Retrofit](https://square.github.io/retrofit/)** for network queries.
+  * **[GSON](https://github.com/google/gson)** for parsing JSON.
   NOTE: considering switch to **Moshi**.
-* **[DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)** for working with user preferences (e.g. light/dark mode)
+* **[DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)** for working with user preferences (e.g. light/dark mode).
 * **[Room](https://developer.android.com/jetpack/androidx/releases/room)** for local data layer.
-* Caching remote data using **NetworkBoundResource** pattern (by utilizing Room, Retrofit and Flow)
+* Caching remote data using **NetworkBoundResource** pattern (by utilizing Room, Retrofit and Flow).
 * **[Lifecycle components](https://developer.android.com/jetpack/androidx/releases/lifecycle)**.
-  1. **ViewModel** for implementing MVVM pattern.
+  * **ViewModel** for implementing MVVM pattern.
 * **[Glide](https://github.com/bumptech/glide)** for working with images.
 * Testing.
-  1. **JUnit**.
-  2. **[Android testing library](https://developer.android.com/jetpack/androidx/releases/test)**.
-  3. **Espresso** for UI-testing.
-  4. **Mockito** for mocking third-party classes (e.g. *NavController*).
-  5. Specific testing artifacts for other libraries.
+  * **JUnit**.
+  * **[Android testing library](https://developer.android.com/jetpack/androidx/releases/test)**.
+  * **Espresso** for UI-testing.
+  * **Mockito** for mocking third-party classes (e.g. *NavController*).
+  * Specific testing artifacts for other libraries.
 * **[Hilt](https://dagger.dev/hilt/)** for dependency injection.
 
 ## Architecture
@@ -61,7 +61,7 @@ For dependency flow there is .di package with corresponding modules.
 ## Attribution
 Icons:
 * "Alive" and "Dead" icons made by [Pixel perfect](https://icon54.com/) from [Flaticon](https://www.flaticon.com/).
-* "Episode" icon made by [Freepik](https://www.freepik.com) from [Flaticon](https://www.flaticon.com/)
+* "Episode" icon made by [Freepik](https://www.freepik.com) from [Flaticon](https://www.flaticon.com/).
 
 ## License
 ```
