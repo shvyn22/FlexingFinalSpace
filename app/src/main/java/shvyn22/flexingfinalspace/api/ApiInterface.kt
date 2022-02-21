@@ -1,5 +1,6 @@
 package shvyn22.flexingfinalspace.api
 
+import retrofit2.Call
 import retrofit2.http.GET
 import shvyn22.flexingfinalspace.data.remote.CharacterDTO
 import shvyn22.flexingfinalspace.data.remote.EpisodeDTO
@@ -8,11 +9,11 @@ import shvyn22.flexingfinalspace.data.remote.QuoteDTO
 interface ApiInterface {
 
     @GET("character")
-    suspend fun getCharacters(): List<CharacterDTO>
+    fun getCharacters(): Call<List<CharacterDTO>>
 
     @GET("episode")
-    suspend fun getEpisodes(): List<EpisodeDTO>
+    fun getEpisodes(): Call<List<EpisodeDTO>>
 
     @GET("quote")
-    suspend fun getQuotes(): List<QuoteDTO>
+    fun getQuotes(): Call<List<QuoteDTO>>
 }

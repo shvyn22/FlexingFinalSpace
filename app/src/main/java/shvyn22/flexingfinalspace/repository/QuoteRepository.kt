@@ -1,6 +1,6 @@
 package shvyn22.flexingfinalspace.repository
 
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 import shvyn22.flexingfinalspace.api.ApiInterface
 import shvyn22.flexingfinalspace.data.local.dao.QuoteDao
 import shvyn22.flexingfinalspace.data.local.model.QuoteModel
@@ -13,7 +13,7 @@ class QuoteRepository(
     private val api: ApiInterface
 ) : Repository<QuoteModel> {
 
-    override fun getItems(): Flow<Resource<List<QuoteModel>>> =
+    override fun getItems(): Observable<Resource<List<QuoteModel>>> =
         networkBoundResource(
             query = { dao.getAll() },
             fetch = { api.getQuotes() },

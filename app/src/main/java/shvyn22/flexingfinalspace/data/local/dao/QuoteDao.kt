@@ -2,15 +2,16 @@ package shvyn22.flexingfinalspace.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
 import shvyn22.flexingfinalspace.data.local.model.QuoteModel
 
 @Dao
-interface QuoteDao: DaoInterface<QuoteModel> {
+interface QuoteDao : DaoInterface<QuoteModel> {
 
     @Query("SELECT * FROM Quote")
-    override fun getAll(): Flow<List<QuoteModel>>
+    override fun getAll(): Observable<List<QuoteModel>>
 
     @Query("DELETE FROM Quote")
-    override suspend fun deleteAll()
+    override fun deleteAll(): Completable
 }

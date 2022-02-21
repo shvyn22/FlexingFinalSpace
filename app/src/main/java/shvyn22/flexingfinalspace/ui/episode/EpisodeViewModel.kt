@@ -1,19 +1,20 @@
 package shvyn22.flexingfinalspace.ui.episode
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import shvyn22.flexingfinalspace.data.local.model.EpisodeModel
 import shvyn22.flexingfinalspace.repository.Repository
+import shvyn22.flexingfinalspace.util.toLiveData
 import javax.inject.Inject
 
 class EpisodeViewModel @Inject constructor(
-    private val repository: Repository<EpisodeModel>
+    repository: Repository<EpisodeModel>
 ) : ViewModel() {
 
-    val items = flow {
-        repository.getItems().collect {
-            emit(it)
-        }
-    }
+    val items = repository
+        .getItems()
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .toLiveData()
 }

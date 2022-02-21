@@ -1,21 +1,26 @@
 package shvyn22.flexingfinalspace.util
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emitAll
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
+import retrofit2.Call
 
 inline fun <Model, DTO> networkBoundResource(
-    crossinline query: () -> Flow<Model>,
-    crossinline fetch: suspend () -> DTO,
-    crossinline saveFetchResult: suspend (DTO) -> Unit
-) = flow {
-    emit(Resource.Loading())
-    val result = try {
-        saveFetchResult(fetch())
-        query().map { Resource.Success(it) }
+    crossinline query: () -> Observable<Model>,
+    crossinline fetch: () -> Call<DTO>,
+    crossinline saveFetchResult: (DTO) -> Completable
+): Observable<Resource<Model>> = Observable.create { sub ->
+    sub.onNext(Resource.Loading())
+    try {
+        saveFetchResult(
+            fetch().execute().body() ?: throw IllegalArgumentException()
+        ).subscribe()
+
+        query()
+            .map { sub.onNext(Resource.Success(it)) }
+            .subscribe()
     } catch (e: Throwable) {
-        query().map { Resource.Error(it, e) }
+        query()
+            .map { sub.onNext(Resource.Error(it, e)) }
+            .subscribe()
     }
-    emitAll(result)
 }

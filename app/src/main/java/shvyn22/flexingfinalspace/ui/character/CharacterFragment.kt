@@ -40,7 +40,7 @@ class CharacterFragment: Fragment(R.layout.fragment_character) {
         binding.apply {
             rvCharacters.adapter = characterAdapter
 
-            viewModel.items.collectOnLifecycle(viewLifecycleOwner) { resource ->
+            viewModel.items.observe(viewLifecycleOwner) { resource ->
                 if (resource is Resource.Success)
                     characterAdapter.updateAndNotify(resource.data)
                 else if (resource is Resource.Error) {

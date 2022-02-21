@@ -14,7 +14,6 @@ import androidx.navigation.ui.setupWithNavController
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.ActivityMainBinding
 import shvyn22.flexingfinalspace.util.MultiViewModelFactory
-import shvyn22.flexingfinalspace.util.collectOnLifecycle
 import shvyn22.flexingfinalspace.util.singletonComponent
 import javax.inject.Inject
 
@@ -35,13 +34,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager
-                .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         binding.bottomNavView.setupWithNavController(navController)
 
         val appBarConfiguration = AppBarConfiguration(
-                setOf(R.id.characterFragment, R.id.episodeFragment, R.id.quoteFragment)
+            setOf(R.id.characterFragment, R.id.episodeFragment, R.id.quoteFragment)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
@@ -49,14 +48,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_app_bar, menu)
 
-        viewModel.nightMode.collectOnLifecycle(this) {
+        viewModel.nightMode.observe(this) {
             AppCompatDelegate.setDefaultNightMode(it)
             menu?.findItem(R.id.menu_mode)?.apply {
                 if (it == AppCompatDelegate.MODE_NIGHT_YES) {
                     setIcon(R.drawable.ic_light_mode)
                     setTitle(R.string.mode_light)
-                }
-                else {
+                } else {
                     setIcon(R.drawable.ic_night_mode)
                     setTitle(R.string.mode_night)
                 }

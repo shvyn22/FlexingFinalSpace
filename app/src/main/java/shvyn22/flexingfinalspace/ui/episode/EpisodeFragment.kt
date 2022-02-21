@@ -40,7 +40,7 @@ class EpisodeFragment: Fragment(R.layout.fragment_episode) {
         binding.apply {
             rvEpisodes.adapter = episodeAdapter
 
-            viewModel.items.collectOnLifecycle(viewLifecycleOwner) { resource ->
+            viewModel.items.observe(viewLifecycleOwner) { resource ->
                 if (resource is Resource.Success)
                     episodeAdapter.updateAndNotify(resource.data)
                 else if (resource is Resource.Error) {

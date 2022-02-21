@@ -1,10 +1,10 @@
 package shvyn22.flexingfinalspace.data.preferences
 
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 
 interface PreferencesManager {
 
-    val nightMode: Flow<Int>
+    val nightMode: Observable<Int>
 
-    suspend fun editNightMode(nightMode: Int)
+    fun editNightMode(nightMode: Int)
 }

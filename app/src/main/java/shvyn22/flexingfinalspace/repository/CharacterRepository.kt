@@ -1,6 +1,6 @@
 package shvyn22.flexingfinalspace.repository
 
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 import shvyn22.flexingfinalspace.api.ApiInterface
 import shvyn22.flexingfinalspace.data.local.dao.CharacterDao
 import shvyn22.flexingfinalspace.data.local.model.CharacterModel
@@ -13,7 +13,7 @@ class CharacterRepository(
     private val api: ApiInterface
 ) : Repository<CharacterModel> {
 
-    override fun getItems(): Flow<Resource<List<CharacterModel>>> =
+    override fun getItems(): Observable<Resource<List<CharacterModel>>> =
         networkBoundResource(
             query = { dao.getAll() },
             fetch = { api.getCharacters() },

@@ -34,7 +34,7 @@ class QuoteFragment: Fragment(R.layout.fragment_quote) {
         binding.apply {
             rvQuotes.adapter = quoteAdapter
 
-            viewModel.items.collectOnLifecycle(viewLifecycleOwner) { resource ->
+            viewModel.items.observe(viewLifecycleOwner) { resource ->
                 if (resource is Resource.Success)
                     quoteAdapter.updateAndNotify(resource.data)
                 else if (resource is Resource.Error) {

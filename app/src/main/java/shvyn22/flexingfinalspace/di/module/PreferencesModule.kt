@@ -1,10 +1,9 @@
 package shvyn22.flexingfinalspace.di.module
 
 import android.app.Application
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStoreFile
+import androidx.datastore.preferences.rxjava3.RxPreferenceDataStoreBuilder
+import androidx.datastore.rxjava3.RxDataStore
 import dagger.Module
 import dagger.Provides
 import shvyn22.flexingfinalspace.data.preferences.PreferencesManager
@@ -16,16 +15,12 @@ object PreferencesModule {
 
     @Singleton
     @Provides
-    fun provideDataStore(app: Application): DataStore<Preferences> =
-        PreferenceDataStoreFactory.create(
-            produceFile = {
-                app.preferencesDataStoreFile("preferences")
-            }
-        )
+    fun provideDataStore(app: Application): RxDataStore<Preferences> =
+        RxPreferenceDataStoreBuilder(app, "preferences").build()
 
     @Singleton
     @Provides
     fun providePreferencesManager(
-        dataStore: DataStore<Preferences>
+        dataStore: RxDataStore<Preferences>
     ): PreferencesManager = PreferencesManagerImpl(dataStore)
 }

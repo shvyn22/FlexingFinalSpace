@@ -1,23 +1,26 @@
 package shvyn22.flexingfinalspace.data.preferences
 
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
-import kotlinx.coroutines.flow.map
+import androidx.datastore.rxjava3.RxDataStore
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 
 class PreferencesManagerImpl(
-    private val dataStore: DataStore<Preferences>
+    private val dataStore: RxDataStore<Preferences>
 ) : PreferencesManager {
 
-    override val nightMode = dataStore.data.map {
+    override val nightMode: Observable<Int> = dataStore.data().map {
         it[PreferencesKeys.NIGHT_MODE] ?: AppCompatDelegate.getDefaultNightMode()
-    }
+    }.toObservable()
 
-    override suspend fun editNightMode(nightMode: Int) {
-        dataStore.edit {
-            it[PreferencesKeys.NIGHT_MODE] = nightMode
+    override fun editNightMode(nightMode: Int) {
+        dataStore.updateDataAsync {
+            val mutablePrefs = it.toMutablePreferences()
+            mutablePrefs[PreferencesKeys.NIGHT_MODE] = nightMode
+            Single.just(mutablePrefs)
         }
     }
 
