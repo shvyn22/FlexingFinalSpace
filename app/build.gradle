@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
@@ -17,8 +16,6 @@ android {
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "shvyn22.flexingfinalspace.HiltTestRunner"
     }
 
     buildTypes {
@@ -38,16 +35,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-    sourceSets {
-        androidTest.java.srcDirs += 'src/sharedTest/java'
-        test.java.srcDirs += 'src/sharedTest/java'
-    }
-    packagingOptions {
-        exclude "**/attach_hotspot_windows.dll"
-        exclude "META-INF/licenses/**"
-        exclude 'META-INF/AL2.0'
-        exclude 'META-INF/LGPL2.1'
-    }
 }
 
 dependencies {
@@ -62,28 +49,6 @@ dependencies {
     // UI
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-
-    // Tests
-    testImplementation "junit:junit:$junitVersion"
-    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
-    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
-    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
-
-    androidTestImplementation "junit:junit:$junitVersion"
-    androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
-    androidTestImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
-    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
-    androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
-
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
-
-    debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
-    androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
-    androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
-    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
 
     // Fragment
     implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
@@ -101,15 +66,17 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
 
+    // RxJava
+    implementation "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxJavaVersion"
+
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
-    // Dagger Hilt
-    implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
-    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+    // Dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
     // DataStore
     implementation "androidx.datastore:datastore-preferences:$dataStoreVersion"

@@ -1,11 +1,9 @@
-package shvyn22.flexingfinalspace.di
+package shvyn22.flexingfinalspace.di.module
 
 import android.app.Application
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.components.SingletonComponent
-import dagger.hilt.testing.TestInstallIn
 import shvyn22.flexingfinalspace.data.local.AppDatabase
 import shvyn22.flexingfinalspace.data.local.dao.CharacterDao
 import shvyn22.flexingfinalspace.data.local.dao.EpisodeDao
@@ -13,21 +11,18 @@ import shvyn22.flexingfinalspace.data.local.dao.QuoteDao
 import javax.inject.Singleton
 
 @Module
-@TestInstallIn(
-    components = [SingletonComponent::class],
-    replaces = [DatabaseModule::class]
-)
-object FakeDatabaseModule {
+object DatabaseModule {
 
     @Singleton
     @Provides
     fun provideDatabase(app: Application): AppDatabase =
         Room
-            .inMemoryDatabaseBuilder(
+            .databaseBuilder(
                 app,
-                AppDatabase::class.java
+                AppDatabase::class.java,
+                "appDatabase"
             )
-            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
             .build()
 
     @Singleton

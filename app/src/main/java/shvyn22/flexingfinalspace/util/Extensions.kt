@@ -1,5 +1,6 @@
 package shvyn22.flexingfinalspace.util
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.lifecycle.Lifecycle
@@ -12,7 +13,9 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import shvyn22.flexingfinalspace.FinalSpaceApp
 import shvyn22.flexingfinalspace.R
+import shvyn22.flexingfinalspace.di.component.SingletonComponent
 
 fun RequestBuilder<Drawable>.defaultRequests(): RequestBuilder<Drawable> {
     return this
@@ -41,3 +44,9 @@ fun View.showError(e: Throwable) {
         )
         .show()
 }
+
+val Context.singletonComponent: SingletonComponent
+    get() = when (this) {
+        is FinalSpaceApp -> singletonComponent
+        else -> applicationContext.singletonComponent
+    }

@@ -5,12 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import dagger.hilt.android.AndroidEntryPoint
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.FragmentCharacterDetailsBinding
 import shvyn22.flexingfinalspace.util.defaultRequests
 
-@AndroidEntryPoint
 class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
 
     private val args: CharacterDetailsFragmentArgs by navArgs()

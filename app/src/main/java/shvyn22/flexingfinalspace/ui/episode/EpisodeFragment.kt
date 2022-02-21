@@ -1,22 +1,29 @@
 package shvyn22.flexingfinalspace.ui.episode
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import dagger.hilt.android.AndroidEntryPoint
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.FragmentEpisodeBinding
-import shvyn22.flexingfinalspace.util.Resource
-import shvyn22.flexingfinalspace.util.collectOnLifecycle
-import shvyn22.flexingfinalspace.util.showError
+import shvyn22.flexingfinalspace.util.*
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class EpisodeFragment: Fragment(R.layout.fragment_episode) {
 
-    private val viewModel: EpisodeViewModel by viewModels()
+    @Inject
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    private val viewModel: EpisodeViewModel by viewModels { viewModelFactory }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        context.singletonComponent.inject(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -11,19 +11,25 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import dagger.hilt.android.AndroidEntryPoint
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.ActivityMainBinding
+import shvyn22.flexingfinalspace.util.MultiViewModelFactory
 import shvyn22.flexingfinalspace.util.collectOnLifecycle
+import shvyn22.flexingfinalspace.util.singletonComponent
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels()
+    @Inject
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    private val viewModel: MainViewModel by viewModels { viewModelFactory }
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        singletonComponent.inject(this)
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

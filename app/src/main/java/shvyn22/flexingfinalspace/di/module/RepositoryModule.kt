@@ -1,9 +1,7 @@
-package shvyn22.flexingfinalspace.di
+package shvyn22.flexingfinalspace.di.module
 
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import shvyn22.flexingfinalspace.api.ApiInterface
 import shvyn22.flexingfinalspace.data.local.dao.CharacterDao
 import shvyn22.flexingfinalspace.data.local.dao.EpisodeDao
@@ -18,7 +16,6 @@ import shvyn22.flexingfinalspace.repository.Repository
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
     @Singleton
