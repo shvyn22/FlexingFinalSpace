@@ -16,6 +16,7 @@
             android:id="@+id/iv_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:contentDescription="@string/text_accessibility_poster"
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,6 +26,7 @@
             android:id="@+id/iv_status"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:contentDescription="@string/text_accessibility_status"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/iv_image"
             app:tint="?android:textColor"
@@ -102,6 +104,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_origin"
             tools:text="@string/text_abilities" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

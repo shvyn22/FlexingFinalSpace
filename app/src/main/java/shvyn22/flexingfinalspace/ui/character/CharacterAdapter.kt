@@ -11,7 +11,7 @@ import shvyn22.flexingfinalspace.util.defaultRequests
 
 class CharacterAdapter(
     private val onClick: (CharacterModel) -> Unit
-): RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     private val items = mutableListOf<CharacterModel>()
 
@@ -38,17 +38,12 @@ class CharacterAdapter(
 
     inner class CharacterViewHolder(
         private val binding: ItemGridBinding
-    ): RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPosition
-                onClick(items[position])
-            }
-        }
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: CharacterModel) {
             binding.apply {
+                root.setOnClickListener { onClick(item) }
+
                 Glide.with(itemView)
                     .load(item.imgURL)
                     .defaultRequests()

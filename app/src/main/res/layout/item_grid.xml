@@ -13,6 +13,7 @@
         android:id="@+id/iv_image"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:contentDescription="@string/text_accessibility_poster"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,5 +31,4 @@
         app:layout_constraintStart_toStartOf="@id/iv_image"
         app:layout_constraintTop_toBottomOf="@id/iv_image"
         tools:text="Sample text" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

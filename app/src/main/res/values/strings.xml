@@ -17,4 +17,7 @@
     <string name="text_writer">Writer: %1$s</string>
 
     <string name="text_error">Error fetching data: %1$s</string>
+
+    <string name="text_accessibility_poster">Poster</string>
+    <string name="text_accessibility_status">Status</string>
 </resources>

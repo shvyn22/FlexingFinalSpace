@@ -40,7 +40,7 @@ class EpisodeFragment: Fragment(R.layout.fragment_episode) {
                     view.showError(resource.error)
                     episodeAdapter.updateAndNotify(resource.data)
                 }
-
+                rvEpisodes.scheduleLayoutAnimation()
                 pbLoading.isVisible = resource is Resource.Loading
             }
         }

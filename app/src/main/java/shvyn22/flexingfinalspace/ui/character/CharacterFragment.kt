@@ -14,7 +14,7 @@ import shvyn22.flexingfinalspace.util.collectOnLifecycle
 import shvyn22.flexingfinalspace.util.showError
 
 @AndroidEntryPoint
-class CharacterFragment: Fragment(R.layout.fragment_character) {
+class CharacterFragment : Fragment(R.layout.fragment_character) {
 
     private val viewModel: CharacterViewModel by viewModels()
 
@@ -40,6 +40,7 @@ class CharacterFragment: Fragment(R.layout.fragment_character) {
                     view.showError(resource.error)
                     characterAdapter.updateAndNotify(resource.data)
                 }
+                rvCharacters.scheduleLayoutAnimation()
                 pbLoading.isVisible = resource is Resource.Loading
             }
         }

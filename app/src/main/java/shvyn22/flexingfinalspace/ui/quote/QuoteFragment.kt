@@ -34,7 +34,7 @@ class QuoteFragment: Fragment(R.layout.fragment_quote) {
                     view.showError(resource.error)
                     quoteAdapter.updateAndNotify(resource.data)
                 }
-
+                rvQuotes.scheduleLayoutAnimation()
                 pbLoading.isVisible = resource is Resource.Loading
             }
         }

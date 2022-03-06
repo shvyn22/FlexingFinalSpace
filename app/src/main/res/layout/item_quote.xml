@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/margin_small"
-    app:cardCornerRadius="10dp"
-    android:elevation="@dimen/card_elevation">
+    android:elevation="@dimen/card_elevation"
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,6 +18,7 @@
             android:id="@+id/iv_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:contentDescription="@string/text_accessibility_poster"
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
