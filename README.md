@@ -59,7 +59,7 @@ The application is divided into 3 layers:
 For dependency flow there is .di package with corresponding modules.
 
 ## Project structure
-<img src="screenshots/project_structure.png" width=750/>
+<img src="screenshots/project_structure.jpg" width=750/>
 
 ## Attribution
 Icons:
@@ -70,7 +70,7 @@ Icons:
 ```
 MIT License
 
-Copyright (c) 2021 Shvyndia Andrii
+Copyright (c) 2022 Shvyndia Andrii
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
