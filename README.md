@@ -53,10 +53,7 @@ The application is divided into 3 layers:
 2. **Domain** (.repository): Repositories(abstractions and implementations).
 3. **Data** (.data, .api): API service, DTOs for remote data; Database, DAOs, Models for local data.
 
-For dependency flow there is .di package with corresponding modules. 
-
-## Project structure
-<img src="screenshots/project_structure.png" width=750/>
+For dependency flow there is .di package with corresponding modules.
 
 ## Attribution
 Icons:
@@ -67,7 +64,7 @@ Icons:
 ```
 MIT License
 
-Copyright (c) 2021 Shvyndia Andrii
+Copyright (c) 2022 Shvyndia Andrii
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
