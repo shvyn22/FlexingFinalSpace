@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import kotlinx.coroutines.flow.Flow
 import shvyn22.flexingfinalspace.data.local.model.CharacterModel
 
 @Dao

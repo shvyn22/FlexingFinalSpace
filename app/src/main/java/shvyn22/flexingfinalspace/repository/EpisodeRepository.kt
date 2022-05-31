@@ -1,7 +1,7 @@
 package shvyn22.flexingfinalspace.repository
 
 import io.reactivex.rxjava3.core.Observable
-import shvyn22.flexingfinalspace.api.ApiInterface
+import shvyn22.flexingfinalspace.data.remote.api.ApiService
 import shvyn22.flexingfinalspace.data.local.dao.EpisodeDao
 import shvyn22.flexingfinalspace.data.local.model.EpisodeModel
 import shvyn22.flexingfinalspace.data.util.fromEpisodeDTOToModel
@@ -10,7 +10,7 @@ import shvyn22.flexingfinalspace.util.networkBoundResource
 
 class EpisodeRepository(
     private val dao: EpisodeDao,
-    private val api: ApiInterface
+    private val api: ApiService
 ) : Repository<EpisodeModel> {
 
     override fun getItems(): Observable<Resource<List<EpisodeModel>>> =

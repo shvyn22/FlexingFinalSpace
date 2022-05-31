@@ -1,10 +1,8 @@
 package shvyn22.flexingfinalspace.data.preferences
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.rxjava3.RxDataStore
-import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
@@ -12,19 +10,19 @@ class PreferencesManagerImpl(
     private val dataStore: RxDataStore<Preferences>
 ) : PreferencesManager {
 
-    override val nightMode: Observable<Int> = dataStore.data().map {
-        it[PreferencesKeys.NIGHT_MODE] ?: AppCompatDelegate.getDefaultNightMode()
+    override val isDarkTheme: Observable<Boolean> = dataStore.data().map {
+        it[PreferencesKeys.DARK_THEME] ?: false
     }.toObservable()
 
-    override fun editNightMode(nightMode: Int) {
+    override fun editThemePreferences(newThemeValue: Boolean) {
         dataStore.updateDataAsync {
             val mutablePrefs = it.toMutablePreferences()
-            mutablePrefs[PreferencesKeys.NIGHT_MODE] = nightMode
+            mutablePrefs[PreferencesKeys.DARK_THEME] = newThemeValue
             Single.just(mutablePrefs)
         }
     }
 
     private object PreferencesKeys {
-        val NIGHT_MODE = intPreferencesKey("nightMode")
+        val DARK_THEME = booleanPreferencesKey("isDarkTheme")
     }
 }

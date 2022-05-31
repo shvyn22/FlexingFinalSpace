@@ -6,8 +6,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "Episode")
 @Parcelize
+@Entity(tableName = "Episode")
 data class EpisodeModel(
 
     @PrimaryKey

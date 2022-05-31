@@ -8,6 +8,7 @@ import shvyn22.flexingfinalspace.data.local.AppDatabase
 import shvyn22.flexingfinalspace.data.local.dao.CharacterDao
 import shvyn22.flexingfinalspace.data.local.dao.EpisodeDao
 import shvyn22.flexingfinalspace.data.local.dao.QuoteDao
+import shvyn22.flexingfinalspace.util.DATABASE_NAME
 import javax.inject.Singleton
 
 @Module
@@ -20,7 +21,7 @@ object DatabaseModule {
             .databaseBuilder(
                 app,
                 AppDatabase::class.java,
-                "appDatabase"
+                DATABASE_NAME
             )
             .fallbackToDestructiveMigration()
             .build()

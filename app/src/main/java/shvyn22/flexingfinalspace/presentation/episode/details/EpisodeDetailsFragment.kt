@@ -1,4 +1,4 @@
-package shvyn22.flexingfinalspace.ui.episode.details
+package shvyn22.flexingfinalspace.presentation.episode.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,14 +11,14 @@ import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.FragmentEpisodeDetailsBinding
 import shvyn22.flexingfinalspace.util.defaultRequests
 
-class EpisodeDetailsFragment: BottomSheetDialogFragment() {
+class EpisodeDetailsFragment : BottomSheetDialogFragment() {
 
     private val args: EpisodeDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_episode_details, container, false)
     }

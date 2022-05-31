@@ -1,54 +1,49 @@
-package shvyn22.flexingfinalspace.ui.episode
+package shvyn22.flexingfinalspace.presentation.character
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import shvyn22.flexingfinalspace.data.local.model.EpisodeModel
+import shvyn22.flexingfinalspace.data.local.model.CharacterModel
 import shvyn22.flexingfinalspace.databinding.ItemGridBinding
 import shvyn22.flexingfinalspace.util.defaultRequests
 
-class EpisodeAdapter(
-    private val onClick: (EpisodeModel) -> Unit
-): RecyclerView.Adapter<EpisodeAdapter.EpisodeViewHolder>() {
+class CharacterAdapter(
+    private val onClick: (CharacterModel) -> Unit
+) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
-    private val items = mutableListOf<EpisodeModel>()
+    private val items = mutableListOf<CharacterModel>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
-        return EpisodeViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
+        return CharacterViewHolder(
             ItemGridBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
     }
 
-    override fun onBindViewHolder(holder: EpisodeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         holder.bind(items[position])
     }
 
     override fun getItemCount() = items.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateAndNotify(newItems: List<EpisodeModel>) {
+    fun updateAndNotify(newItems: List<CharacterModel>) {
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    inner class EpisodeViewHolder(
+    inner class CharacterViewHolder(
         private val binding: ItemGridBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPosition
-                onClick(items[position])
-            }
-        }
-
-        fun bind(item: EpisodeModel) {
+        fun bind(item: CharacterModel) {
             binding.apply {
+                root.setOnClickListener { onClick(item) }
+
                 Glide.with(itemView)
                     .load(item.imgURL)
                     .defaultRequests()

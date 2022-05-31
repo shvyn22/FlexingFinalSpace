@@ -4,10 +4,10 @@ import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
 import shvyn22.flexingfinalspace.di.module.AppModule
-import shvyn22.flexingfinalspace.ui.MainActivity
-import shvyn22.flexingfinalspace.ui.character.CharacterFragment
-import shvyn22.flexingfinalspace.ui.episode.EpisodeFragment
-import shvyn22.flexingfinalspace.ui.quote.QuoteFragment
+import shvyn22.flexingfinalspace.presentation.MainActivity
+import shvyn22.flexingfinalspace.presentation.character.CharacterFragment
+import shvyn22.flexingfinalspace.presentation.episode.EpisodeFragment
+import shvyn22.flexingfinalspace.presentation.quote.QuoteFragment
 import javax.inject.Singleton
 
 @Singleton
@@ -26,7 +26,7 @@ interface SingletonComponent {
     interface Factory {
 
         fun create(
-            @BindsInstance application: Application
+            @BindsInstance app: Application
         ): SingletonComponent
     }
 }

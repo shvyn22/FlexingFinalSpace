@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DaoInterface<T> {

@@ -1,4 +1,4 @@
-package shvyn22.flexingfinalspace.ui.character.details
+package shvyn22.flexingfinalspace.presentation.character.details
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.FragmentCharacterDetailsBinding
 import shvyn22.flexingfinalspace.util.defaultRequests
 
-class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
+class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
 
     private val args: CharacterDetailsFragmentArgs by navArgs()
 
@@ -37,12 +37,12 @@ class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
 
             tvName.text = character.name
             tvAlias.text = getString(
-                    R.string.text_alias,
-                    character.alias.joinToString(", ")
+                R.string.text_alias,
+                character.alias.joinToString(", ")
             )
             tvAbilities.text = getString(
-                    R.string.text_abilities,
-                    character.abilities.joinToString(", ")
+                R.string.text_abilities,
+                character.abilities.joinToString(", ")
             )
             tvSpecies.text = getString(R.string.text_species, character.species)
             tvGender.text = getString(R.string.text_gender, character.gender)

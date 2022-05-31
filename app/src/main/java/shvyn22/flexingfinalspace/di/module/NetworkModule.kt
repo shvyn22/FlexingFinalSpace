@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import shvyn22.flexingfinalspace.api.ApiInterface
-import shvyn22.flexingfinalspace.util.Constants.BASE_URL
+import shvyn22.flexingfinalspace.data.remote.api.ApiService
+import shvyn22.flexingfinalspace.util.BASE_URL
 import javax.inject.Singleton
 
 @Module
@@ -21,6 +21,6 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiInterface(retrofit: Retrofit): ApiInterface =
-        retrofit.create(ApiInterface::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 }

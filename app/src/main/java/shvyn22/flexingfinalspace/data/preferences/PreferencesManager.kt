@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Observable
 
 interface PreferencesManager {
 
-    val nightMode: Observable<Int>
+    val isDarkTheme: Observable<Boolean>
 
-    fun editNightMode(nightMode: Int)
+    fun editThemePreferences(newThemeValue: Boolean)
 }

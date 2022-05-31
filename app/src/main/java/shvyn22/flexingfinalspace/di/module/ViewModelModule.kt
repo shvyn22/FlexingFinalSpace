@@ -5,10 +5,10 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import shvyn22.flexingfinalspace.di.util.ViewModelKey
-import shvyn22.flexingfinalspace.ui.MainViewModel
-import shvyn22.flexingfinalspace.ui.character.CharacterViewModel
-import shvyn22.flexingfinalspace.ui.episode.EpisodeViewModel
-import shvyn22.flexingfinalspace.ui.quote.QuoteViewModel
+import shvyn22.flexingfinalspace.presentation.MainViewModel
+import shvyn22.flexingfinalspace.presentation.character.CharacterViewModel
+import shvyn22.flexingfinalspace.presentation.episode.EpisodeViewModel
+import shvyn22.flexingfinalspace.presentation.quote.QuoteViewModel
 
 @Module
 interface ViewModelModule {

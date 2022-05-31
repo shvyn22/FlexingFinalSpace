@@ -1,4 +1,4 @@
-package shvyn22.flexingfinalspace.ui.quote
+package shvyn22.flexingfinalspace.presentation.quote
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

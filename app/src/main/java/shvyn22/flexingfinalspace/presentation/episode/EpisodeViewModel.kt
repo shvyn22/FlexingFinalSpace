@@ -1,4 +1,4 @@
-package shvyn22.flexingfinalspace.ui.episode
+package shvyn22.flexingfinalspace.presentation.episode
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

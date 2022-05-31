@@ -1,4 +1,4 @@
-package shvyn22.flexingfinalspace.ui
+package shvyn22.flexingfinalspace.presentation
 
 import android.os.Bundle
 import android.view.Menu
@@ -48,10 +48,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_app_bar, menu)
 
-        viewModel.nightMode.observe(this) {
-            AppCompatDelegate.setDefaultNightMode(it)
+        viewModel.isDarkTheme.observe(this) { isDarkTheme ->
+            AppCompatDelegate.setDefaultNightMode(
+                if (isDarkTheme) AppCompatDelegate.MODE_NIGHT_YES
+                else AppCompatDelegate.MODE_NIGHT_NO
+            )
+
             menu?.findItem(R.id.menu_mode)?.apply {
-                if (it == AppCompatDelegate.MODE_NIGHT_YES) {
+                if (isDarkTheme) {
                     setIcon(R.drawable.ic_light_mode)
                     setTitle(R.string.mode_light)
                 } else {
@@ -65,7 +69,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_mode) viewModel.onToggleModeIcon()
+        if (item.itemId == R.id.menu_mode)
+            viewModel.editThemePreferences(
+                AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO
+            )
         return super.onOptionsItemSelected(item)
     }
 

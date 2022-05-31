@@ -1,4 +1,4 @@
-package shvyn22.flexingfinalspace.ui.character
+package shvyn22.flexingfinalspace.presentation.character
 
 import android.content.Context
 import android.os.Bundle

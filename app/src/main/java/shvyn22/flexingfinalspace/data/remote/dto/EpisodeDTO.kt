@@ -1,4 +1,4 @@
-package shvyn22.flexingfinalspace.data.remote
+package shvyn22.flexingfinalspace.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
