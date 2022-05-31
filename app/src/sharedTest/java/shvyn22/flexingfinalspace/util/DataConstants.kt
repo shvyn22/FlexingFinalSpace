@@ -1,8 +1,8 @@
 package shvyn22.flexingfinalspace.util
 
-import shvyn22.flexingfinalspace.data.remote.CharacterDTO
-import shvyn22.flexingfinalspace.data.remote.EpisodeDTO
-import shvyn22.flexingfinalspace.data.remote.QuoteDTO
+import shvyn22.flexingfinalspace.data.remote.dto.CharacterDTO
+import shvyn22.flexingfinalspace.data.remote.dto.EpisodeDTO
+import shvyn22.flexingfinalspace.data.remote.dto.QuoteDTO
 
 val character1 = CharacterDTO(
     id = 1,
@@ -68,4 +68,4 @@ val quote2 = QuoteDTO(
 
 val quotes = listOf(quote1, quote2)
 
-const val TEST_PREFERENCES_FILENAME = "test-preferences"
+const val TEST_DATASTORE_FILENAME = "test-preferences"

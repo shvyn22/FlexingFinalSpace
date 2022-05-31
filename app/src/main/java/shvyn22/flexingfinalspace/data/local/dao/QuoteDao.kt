@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import shvyn22.flexingfinalspace.data.local.model.QuoteModel
 
 @Dao
-interface QuoteDao: DaoInterface<QuoteModel> {
+interface QuoteDao : DaoInterface<QuoteModel> {
 
     @Query("SELECT * FROM Quote")
     override fun getAll(): Flow<List<QuoteModel>>

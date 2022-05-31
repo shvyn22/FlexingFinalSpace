@@ -1,6 +1,5 @@
 package shvyn22.flexingfinalspace.util
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
@@ -10,23 +9,20 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.Is.`is`
 import org.junit.Rule
 import org.junit.Test
-import shvyn22.flexingfinalspace.api.FakeApiInterface
 import shvyn22.flexingfinalspace.data.local.dao.FakeCharacterDao
 import shvyn22.flexingfinalspace.data.local.model.CharacterModel
+import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.data.util.fromCharacterDTOToModel
 
 @ExperimentalCoroutinesApi
 class NetworkBoundResourceTest {
 
     @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
-
-    @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
     @Test
     fun successfulQueryAndSuccessfulFetch_ReturnsLoadingAndSuccess() = runBlocking {
-        val api = FakeApiInterface(false)
+        val api = FakeApiService(false)
         api.initCharacters(characters)
         val dao = FakeCharacterDao()
 
@@ -59,7 +55,7 @@ class NetworkBoundResourceTest {
 
     @Test
     fun successfulQueryAndUnsuccessfulFetch_ReturnsLoadingAndError() = runBlocking {
-        val api = FakeApiInterface(true)
+        val api = FakeApiService(true)
         val dao = FakeCharacterDao()
 
         val result = networkBoundResource(

@@ -5,18 +5,18 @@ This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and pro
 ## Screenshots
 ### Light mode
 <p float="left">
-  <img src="screenshots/screen1.png" width=200/>
-  <img src="screenshots/screen2.png" width=200/> 
-  <img src="screenshots/screen3.png" width=200/>
-  <img src="screenshots/screen4.png" width=200/>
+  <img src="assets/screen1.png" width=200/>
+  <img src="assets/screen2.png" width=200/> 
+  <img src="assets/screen3.png" width=200/>
+  <img src="assets/screen4.png" width=200/>
 </p>
 
 ### Dark mode
 <p float="left">
-  <img src="screenshots/screen1-dm.png" width=200/>
-  <img src="screenshots/screen2-dm.png" width=200/> 
-  <img src="screenshots/screen3-dm.png" width=200/>
-  <img src="screenshots/screen4-dm.png" width=200/>
+  <img src="assets/screen1-dm.png" width=200/>
+  <img src="assets/screen2-dm.png" width=200/> 
+  <img src="assets/screen3-dm.png" width=200/>
+  <img src="assets/screen4-dm.png" width=200/>
 </p>
 
 ## Tech stack and concepts

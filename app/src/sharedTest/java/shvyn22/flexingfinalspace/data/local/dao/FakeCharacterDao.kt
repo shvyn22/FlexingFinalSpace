@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import shvyn22.flexingfinalspace.data.local.model.CharacterModel
 
-class FakeCharacterDao: CharacterDao {
+class FakeCharacterDao : CharacterDao {
 
     private val characters = mutableListOf<CharacterModel>()
 

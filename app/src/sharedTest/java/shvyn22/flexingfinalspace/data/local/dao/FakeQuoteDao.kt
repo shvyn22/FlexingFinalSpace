@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import shvyn22.flexingfinalspace.data.local.model.QuoteModel
 
-class FakeQuoteDao: QuoteDao {
+class FakeQuoteDao : QuoteDao {
 
     private val quotes = mutableListOf<QuoteModel>()
 

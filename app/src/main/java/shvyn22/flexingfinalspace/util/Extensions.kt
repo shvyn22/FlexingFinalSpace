@@ -27,7 +27,7 @@ fun <T> Flow<T>.collectOnLifecycle(
 ) {
     lifecycleOwner.lifecycleScope.launch {
         lifecycleOwner.lifecycle.repeatOnLifecycle(state) {
-            collect(block)
+            collect { block(it) }
         }
     }
 }

@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import shvyn22.flexingfinalspace.data.local.model.EpisodeModel
 
-class FakeEpisodeDao: EpisodeDao {
+class FakeEpisodeDao : EpisodeDao {
 
     private val episodes = mutableListOf<EpisodeModel>()
 

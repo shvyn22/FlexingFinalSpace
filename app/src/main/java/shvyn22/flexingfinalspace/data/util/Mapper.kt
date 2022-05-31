@@ -3,9 +3,9 @@ package shvyn22.flexingfinalspace.data.util
 import shvyn22.flexingfinalspace.data.local.model.CharacterModel
 import shvyn22.flexingfinalspace.data.local.model.EpisodeModel
 import shvyn22.flexingfinalspace.data.local.model.QuoteModel
-import shvyn22.flexingfinalspace.data.remote.CharacterDTO
-import shvyn22.flexingfinalspace.data.remote.EpisodeDTO
-import shvyn22.flexingfinalspace.data.remote.QuoteDTO
+import shvyn22.flexingfinalspace.data.remote.dto.CharacterDTO
+import shvyn22.flexingfinalspace.data.remote.dto.EpisodeDTO
+import shvyn22.flexingfinalspace.data.remote.dto.QuoteDTO
 
 fun fromCharacterDTOToModel(item: CharacterDTO) =
     CharacterModel(

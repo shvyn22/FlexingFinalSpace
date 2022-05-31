@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import shvyn22.flexingfinalspace.api.ApiInterface
+import shvyn22.flexingfinalspace.data.remote.api.ApiService
 import shvyn22.flexingfinalspace.data.local.dao.CharacterDao
 import shvyn22.flexingfinalspace.data.local.dao.EpisodeDao
 import shvyn22.flexingfinalspace.data.local.dao.QuoteDao
@@ -25,20 +25,20 @@ object RepositoryModule {
     @Provides
     fun provideCharacterRepository(
         dao: CharacterDao,
-        api: ApiInterface
+        api: ApiService
     ): Repository<CharacterModel> = CharacterRepository(dao, api)
 
     @Singleton
     @Provides
     fun provideEpisodeRepository(
         dao: EpisodeDao,
-        api: ApiInterface
+        api: ApiService
     ): Repository<EpisodeModel> = EpisodeRepository(dao, api)
 
     @Singleton
     @Provides
     fun provideQuoteRepository(
         dao: QuoteDao,
-        api: ApiInterface
+        api: ApiService
     ): Repository<QuoteModel> = QuoteRepository(dao, api)
 }

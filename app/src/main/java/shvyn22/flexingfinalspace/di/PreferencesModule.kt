@@ -11,6 +11,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import shvyn22.flexingfinalspace.data.preferences.PreferencesManager
 import shvyn22.flexingfinalspace.data.preferences.PreferencesManagerImpl
+import shvyn22.flexingfinalspace.util.DATASTORE_FILENAME
 import javax.inject.Singleton
 
 @Module
@@ -22,7 +23,7 @@ object PreferencesModule {
     fun provideDataStore(app: Application): DataStore<Preferences> =
         PreferenceDataStoreFactory.create(
             produceFile = {
-                app.preferencesDataStoreFile("preferences")
+                app.preferencesDataStoreFile(DATASTORE_FILENAME)
             }
         )
 

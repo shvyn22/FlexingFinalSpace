@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import shvyn22.flexingfinalspace.data.local.model.EpisodeModel
 
 @Dao
-interface EpisodeDao: DaoInterface<EpisodeModel> {
+interface EpisodeDao : DaoInterface<EpisodeModel> {
 
     @Query("SELECT * FROM Episode")
     override fun getAll(): Flow<List<EpisodeModel>>

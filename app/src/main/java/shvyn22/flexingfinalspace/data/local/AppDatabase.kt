@@ -19,7 +19,7 @@ import shvyn22.flexingfinalspace.data.local.model.QuoteModel
     version = 1
 )
 @TypeConverters(Converter::class)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun characterDao(): CharacterDao
 

@@ -1,8 +1,8 @@
 package shvyn22.flexingfinalspace.repository
 
 import kotlinx.coroutines.flow.Flow
-import shvyn22.flexingfinalspace.api.ApiInterface
-import shvyn22.flexingfinalspace.api.FakeApiInterface
+import shvyn22.flexingfinalspace.data.remote.api.ApiService
+import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.data.local.dao.FakeQuoteDao
 import shvyn22.flexingfinalspace.data.local.dao.QuoteDao
 import shvyn22.flexingfinalspace.data.local.model.QuoteModel
@@ -12,7 +12,7 @@ import shvyn22.flexingfinalspace.util.networkBoundResource
 
 class FakeQuoteRepository(
     private val dao: QuoteDao = FakeQuoteDao(),
-    private val api: ApiInterface = FakeApiInterface()
+    private val api: ApiService = FakeApiService()
 ) : Repository<QuoteModel> {
 
     override fun getItems(): Flow<Resource<List<QuoteModel>>> =

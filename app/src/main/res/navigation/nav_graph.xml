@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/characterFragment"
-        android:name="shvyn22.flexingfinalspace.ui.character.CharacterFragment"
+        android:name="shvyn22.flexingfinalspace.presentation.character.CharacterFragment"
         android:label="@string/nav_characters"
         tools:layout="@layout/fragment_character">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/episodeFragment"
-        android:name="shvyn22.flexingfinalspace.ui.episode.EpisodeFragment"
+        android:name="shvyn22.flexingfinalspace.presentation.episode.EpisodeFragment"
         android:label="@string/nav_episodes"
         tools:layout="@layout/fragment_episode">
         <action
@@ -29,12 +29,12 @@
     </fragment>
     <fragment
         android:id="@+id/quoteFragment"
-        android:name="shvyn22.flexingfinalspace.ui.quote.QuoteFragment"
+        android:name="shvyn22.flexingfinalspace.presentation.quote.QuoteFragment"
         android:label="@string/nav_quotes"
         tools:layout="@layout/fragment_quote" />
     <fragment
         android:id="@+id/characterDetailsFragment"
-        android:name="shvyn22.flexingfinalspace.ui.character.details.CharacterDetailsFragment"
+        android:name="shvyn22.flexingfinalspace.presentation.character.details.CharacterDetailsFragment"
         android:label="@string/nav_details"
         tools:layout="@layout/fragment_character_details">
         <argument
@@ -43,7 +43,7 @@
     </fragment>
     <dialog
         android:id="@+id/episodeDetailsFragment"
-        android:name="shvyn22.flexingfinalspace.ui.episode.details.EpisodeDetailsFragment"
+        android:name="shvyn22.flexingfinalspace.presentation.episode.details.EpisodeDetailsFragment"
         android:label="fragment_episode_details"
         tools:layout="@layout/fragment_episode_details">
         <argument

@@ -15,10 +15,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import shvyn22.flexingfinalspace.data.preferences.PreferencesManager
 import shvyn22.flexingfinalspace.data.preferences.PreferencesManagerImpl
-import shvyn22.flexingfinalspace.util.TEST_PREFERENCES_FILENAME
+import shvyn22.flexingfinalspace.util.TEST_DATASTORE_FILENAME
 import java.io.File
 import javax.inject.Singleton
 
@@ -33,7 +33,7 @@ object FakePreferencesModule {
     @Singleton
     @Provides
     fun provideScope(): CoroutineScope =
-        CoroutineScope(TestCoroutineDispatcher() + Job())
+        CoroutineScope(UnconfinedTestDispatcher() + Job())
 
     @Singleton
     @Provides
@@ -41,7 +41,7 @@ object FakePreferencesModule {
         PreferenceDataStoreFactory.create(
             scope = scope,
             produceFile = {
-                app.preferencesDataStoreFile(TEST_PREFERENCES_FILENAME)
+                app.preferencesDataStoreFile(TEST_DATASTORE_FILENAME)
             }
         )
 
@@ -59,7 +59,7 @@ fun tearDownPreferencesDependencies(
         ApplicationProvider
             .getApplicationContext<Context>()
             .filesDir,
-        TEST_PREFERENCES_FILENAME
+        TEST_DATASTORE_FILENAME
     ).deleteRecursively()
 
     scope.cancel()

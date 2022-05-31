@@ -1,11 +1,11 @@
 package shvyn22.flexingfinalspace.data.preferences
 
-import androidx.appcompat.app.AppCompatDelegate
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
@@ -15,6 +15,7 @@ import org.junit.Test
 import shvyn22.flexingfinalspace.di.tearDownPreferencesDependencies
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
 @HiltAndroidTest
 class PreferencesManagerTest {
 
@@ -38,37 +39,37 @@ class PreferencesManagerTest {
     }
 
     @Test
-    fun editInitialMode_ReturnsModeNightYes() = runBlocking {
+    fun editInitialMode_ReturnsModeNightYes() = runTest {
 
-        preferencesManager.editNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        preferencesManager.editThemePreferences(true)
 
-        val nightMode = preferencesManager.nightMode.first()
+        val nightMode = preferencesManager.isDarkTheme.first()
 
         assertThat(
             nightMode,
-            `is`(AppCompatDelegate.MODE_NIGHT_YES)
+            `is`(true)
         )
     }
 
     @Test
-    fun toggleModes_ReturnsValidMode() = runBlocking {
+    fun toggleModes_ReturnsValidMode() = runTest {
 
-        preferencesManager.editNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        preferencesManager.editThemePreferences(false)
 
-        val initialMode = preferencesManager.nightMode.first()
+        val initialMode = preferencesManager.isDarkTheme.first()
 
         assertThat(
             initialMode,
-            `is`(AppCompatDelegate.MODE_NIGHT_NO)
+            `is`(false)
         )
 
-        preferencesManager.editNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        preferencesManager.editThemePreferences(true)
 
-        val afterChangeMode = preferencesManager.nightMode.first()
+        val afterChangeMode = preferencesManager.isDarkTheme.first()
 
         assertThat(
             afterChangeMode,
-            `is`(AppCompatDelegate.MODE_NIGHT_YES)
+            `is`(true)
         )
     }
 }

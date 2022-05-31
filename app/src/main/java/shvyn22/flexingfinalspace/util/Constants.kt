@@ -1,5 +1,5 @@
 package shvyn22.flexingfinalspace.util
 
-object Constants {
-    const val BASE_URL = "https://finalspaceapi.com/api/v0/"
-}
+const val BASE_URL = "https://finalspaceapi.com/api/v0/"
+const val DATABASE_NAME = "appDatabase"
+const val DATASTORE_FILENAME = "preferences"

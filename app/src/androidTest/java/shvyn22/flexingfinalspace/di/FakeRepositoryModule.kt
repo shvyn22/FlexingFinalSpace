@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
-import shvyn22.flexingfinalspace.api.FakeApiInterface
+import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.data.local.dao.CharacterDao
 import shvyn22.flexingfinalspace.data.local.dao.EpisodeDao
 import shvyn22.flexingfinalspace.data.local.dao.QuoteDao
@@ -24,21 +24,21 @@ object FakeRepositoryModule {
     @Singleton
     @Provides
     fun provideCharacterRepository(
-        api: FakeApiInterface,
+        api: FakeApiService,
         dao: CharacterDao
     ): Repository<CharacterModel> = FakeCharacterRepository(dao, api)
 
     @Singleton
     @Provides
     fun provideEpisodeRepository(
-        api: FakeApiInterface,
+        api: FakeApiService,
         dao: EpisodeDao
     ): Repository<EpisodeModel> = FakeEpisodeRepository(dao, api)
 
     @Singleton
     @Provides
     fun provideQuoteRepository(
-        api: FakeApiInterface,
+        api: FakeApiService,
         dao: QuoteDao
     ): Repository<QuoteModel> = FakeQuoteRepository(dao, api)
 }
