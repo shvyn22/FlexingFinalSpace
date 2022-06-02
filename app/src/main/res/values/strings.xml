@@ -1,8 +1,7 @@
+
 <resources>
     <string name="app_name">FlexingFinalSpace</string>
 
-    <string name="mode_light">Light Mode</string>
-    <string name="mode_night">Night Mode</string>
     <string name="nav_characters">Characters</string>
     <string name="nav_episodes">Episodes</string>
     <string name="nav_quotes">Quotes</string>
@@ -17,7 +16,10 @@
     <string name="text_writer">Writer: %1$s</string>
 
     <string name="text_error">Error fetching data: %1$s</string>
+    <string name="text_default_error">No internet connection</string>
+    <string name="text_details_error">An error occurred when fetching details</string>
 
-    <string name="text_accessibility_poster">Poster</string>
-    <string name="text_accessibility_status">Status</string>
+    <string name="text_alive">Alive</string>
+    <string name="text_deceased">Deceased</string>
+    <string name="text_unknown">Unknown</string>
 </resources>
