@@ -2,6 +2,7 @@ package shvyn22.flexingfinalspace.presentation.episode
 
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
@@ -22,12 +23,14 @@ import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.data.local.dao.EpisodeDao
 import shvyn22.flexingfinalspace.di.tearDownPreferencesDependencies
 import shvyn22.flexingfinalspace.presentation.MainActivity
+import shvyn22.flexingfinalspace.presentation.main.MainScreen
 import shvyn22.flexingfinalspace.util.episode1
 import shvyn22.flexingfinalspace.util.episode1Model
 import shvyn22.flexingfinalspace.util.episode2Model
 import shvyn22.flexingfinalspace.util.episodes
 import javax.inject.Inject
 
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 @HiltAndroidTest
 class EpisodeScreenTest {
@@ -50,12 +53,6 @@ class EpisodeScreenTest {
     @Before
     fun init() {
         hiltRule.inject()
-        composeRule
-            .onNodeWithText(
-                ApplicationProvider.getApplicationContext<Context>()
-                    .getString(R.string.nav_episodes)
-            )
-            .performClick()
     }
 
     @After
@@ -69,6 +66,15 @@ class EpisodeScreenTest {
         fakeApi.initEpisodes(episodes)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_episodes)
+            ).performClick()
+
             onNodeWithText(episode1Model.name)
                 .assertIsDisplayed()
 
@@ -83,6 +89,15 @@ class EpisodeScreenTest {
         fakeApi.initEpisodes(listOf(episode1))
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_episodes)
+            ).performClick()
+
             onNodeWithText(episode1Model.name)
                 .assertIsDisplayed()
         }
@@ -93,6 +108,15 @@ class EpisodeScreenTest {
         fakeApi.changeFailBehavior(false)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_episodes)
+            ).performClick()
+
             // Note: this can't really assert the items aren't in view only because of
             // providing such initial data, but not because of some unexpected error.
             // Used only because of lack of sufficient assertion functions for lazy-layouts.
@@ -114,6 +138,15 @@ class EpisodeScreenTest {
         }
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_episodes)
+            ).performClick()
+
             onNodeWithText(episode1Model.name)
                 .assertIsDisplayed()
 
@@ -128,6 +161,15 @@ class EpisodeScreenTest {
         fakeApi.initEpisodes(episodes)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_episodes)
+            ).performClick()
+
             // Note: this can't really assert the items aren't in view only because of
             // providing such initial data, but not because of some unexpected error.
             // Used only because of lack of sufficient assertion functions for lazy-layouts.

@@ -2,6 +2,7 @@ package shvyn22.flexingfinalspace.presentation.character
 
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
@@ -21,12 +22,14 @@ import shvyn22.flexingfinalspace.data.remote.api.ApiService
 import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.di.tearDownPreferencesDependencies
 import shvyn22.flexingfinalspace.presentation.MainActivity
+import shvyn22.flexingfinalspace.presentation.main.MainScreen
 import shvyn22.flexingfinalspace.util.character1
 import shvyn22.flexingfinalspace.util.character1Model
 import shvyn22.flexingfinalspace.util.character2Model
 import shvyn22.flexingfinalspace.util.characters
 import javax.inject.Inject
 
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 @HiltAndroidTest
 class CharacterScreenTest {
@@ -63,6 +66,10 @@ class CharacterScreenTest {
         fakeApi.initCharacters(characters)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
             onNodeWithText(character1Model.name)
                 .assertIsDisplayed()
 
@@ -77,6 +84,10 @@ class CharacterScreenTest {
         fakeApi.initCharacters(listOf(character1))
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
             onNodeWithText(character1Model.name)
                 .assertIsDisplayed()
         }
@@ -87,6 +98,10 @@ class CharacterScreenTest {
         fakeApi.changeFailBehavior(false)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
             // Note: this can't really assert the items aren't in view only because of
             // providing such initial data, but not because of some unexpected errors.
             // Used only because of lack of sufficient assertion functions for lazy-layouts.
@@ -106,6 +121,10 @@ class CharacterScreenTest {
         runBlocking { dao.insertAll(listOf(character1Model)) }
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
             onNodeWithText(character1Model.name)
                 .assertIsDisplayed()
 
@@ -120,6 +139,10 @@ class CharacterScreenTest {
         fakeApi.initCharacters(characters)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
             // Note: this can't really assert the items aren't in view only because of
             // providing such initial data, but not because of some unexpected error.
             // Used only because of lack of sufficient assertion functions for lazy-layouts.
@@ -137,6 +160,10 @@ class CharacterScreenTest {
         fakeApi.initCharacters(characters)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
             onNodeWithText(character1Model.name)
                 .performClick()
 

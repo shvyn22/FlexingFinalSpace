@@ -17,12 +17,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 @Composable
 fun BottomNavBar(
     navController: NavController,
-    items: List<Screen>,
-    modifier: Modifier = Modifier
+    items: List<Screen>
 ) {
-    BottomNavigation(
-        modifier = modifier
-    ) {
+    BottomNavigation {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { screen ->

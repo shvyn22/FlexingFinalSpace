@@ -11,16 +11,14 @@ import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavController
 import shvyn22.flexingfinalspace.R
 
 @Composable
 fun AppBar(
     isDarkTheme: Boolean,
-    navController: NavController,
     isUpButtonShown: Boolean,
     onToggleTheme: (Boolean) -> Unit,
-    onChangeUpButton: () -> Unit,
+    onUpButtonClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
@@ -42,10 +40,7 @@ fun AppBar(
         navigationIcon = if (!isUpButtonShown) null else {
             {
                 IconButton(
-                    onClick = {
-                        navController.popBackStack()
-                        onChangeUpButton()
-                    }
+                    onClick = { onUpButtonClick() }
                 ) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,

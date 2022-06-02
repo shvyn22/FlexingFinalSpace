@@ -7,7 +7,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.AndroidEntryPoint
 import shvyn22.flexingfinalspace.presentation.main.MainScreen
 import shvyn22.flexingfinalspace.presentation.main.MainViewModel
@@ -22,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             val viewModel: MainViewModel = hiltViewModel()
             val isDarkTheme = viewModel.isDarkTheme.collectAsState()

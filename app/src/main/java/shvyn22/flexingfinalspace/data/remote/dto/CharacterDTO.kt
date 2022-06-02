@@ -3,6 +3,7 @@ package shvyn22.flexingfinalspace.data.remote.dto
 import com.google.gson.annotations.SerializedName
 
 data class CharacterDTO(
+
     @SerializedName("id")
     val id: Int,
 

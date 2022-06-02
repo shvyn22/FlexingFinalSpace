@@ -65,9 +65,9 @@ fun MainScreen(
                 AppBar(
                     isDarkTheme = isDarkTheme,
                     isUpButtonShown = isUpButtonShown.value,
-                    navController = navController,
                     onToggleTheme = onToggleTheme,
-                    onChangeUpButton = {
+                    onUpButtonClick = {
+                        navController.popBackStack()
                         isUpButtonShown.value = !isUpButtonShown.value
                     },
                 )
@@ -81,6 +81,7 @@ fun MainScreen(
             modifier = modifier
                 .fillMaxSize()
         ) { innerPadding ->
+
             error.value?.let {
                 val msg = stringResource(id = R.string.text_error, it)
                 coroutineScope.launch {

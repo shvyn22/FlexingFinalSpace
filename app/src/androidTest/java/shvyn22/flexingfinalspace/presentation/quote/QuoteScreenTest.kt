@@ -2,6 +2,7 @@ package shvyn22.flexingfinalspace.presentation.quote
 
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
@@ -10,7 +11,6 @@ import androidx.test.core.app.ApplicationProvider
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -22,12 +22,14 @@ import shvyn22.flexingfinalspace.data.remote.api.ApiService
 import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.di.tearDownPreferencesDependencies
 import shvyn22.flexingfinalspace.presentation.MainActivity
+import shvyn22.flexingfinalspace.presentation.main.MainScreen
 import shvyn22.flexingfinalspace.util.quote1
 import shvyn22.flexingfinalspace.util.quote1Model
 import shvyn22.flexingfinalspace.util.quote2Model
 import shvyn22.flexingfinalspace.util.quotes
 import javax.inject.Inject
 
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 @HiltAndroidTest
 class QuoteScreenTest {
@@ -50,12 +52,6 @@ class QuoteScreenTest {
     @Before
     fun init() {
         hiltRule.inject()
-        composeRule
-            .onNodeWithText(
-                ApplicationProvider.getApplicationContext<Context>()
-                    .getString(R.string.nav_quotes)
-            )
-            .performClick()
     }
 
     @After
@@ -69,7 +65,15 @@ class QuoteScreenTest {
         fakeApi.initQuotes(quotes)
 
         composeRule.apply {
-            runBlocking { delay(5000) }
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_quotes)
+            ).performClick()
+
             onNodeWithText(quote1Model.quote)
                 .assertIsDisplayed()
 
@@ -84,6 +88,20 @@ class QuoteScreenTest {
         fakeApi.initQuotes(listOf(quote1))
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_quotes)
+            ).performClick()
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_quotes)
+            ).performClick()
+
             onNodeWithText(quote1Model.quote)
                 .assertIsDisplayed()
         }
@@ -94,6 +112,15 @@ class QuoteScreenTest {
         fakeApi.changeFailBehavior(false)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_quotes)
+            ).performClick()
+
             // Note: this can't really assert the items aren't in view only because of
             // providing such initial data, but not because of some unexpected error.
             // Used only because of lack of sufficient assertion functions for lazy-layouts.
@@ -113,6 +140,15 @@ class QuoteScreenTest {
         runBlocking { dao.insertAll(listOf(quote1Model)) }
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_quotes)
+            ).performClick()
+
             onNodeWithText(quote1Model.quote)
                 .assertIsDisplayed()
 
@@ -127,6 +163,15 @@ class QuoteScreenTest {
         fakeApi.initQuotes(quotes)
 
         composeRule.apply {
+            setContent {
+                MainScreen(onToggleTheme = {})
+            }
+
+            onNodeWithText(
+                ApplicationProvider.getApplicationContext<Context>()
+                    .getString(R.string.nav_quotes)
+            ).performClick()
+
             // Note: this can't really assert the items aren't in view only because of
             // providing such initial data, but not because of some unexpected error.
             // Used only because of lack of sufficient assertion functions for lazy-layouts.

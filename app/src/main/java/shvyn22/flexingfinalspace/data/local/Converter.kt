@@ -15,5 +15,3 @@ class Converter {
         else string.split(", ")
     }
 }
-
-
