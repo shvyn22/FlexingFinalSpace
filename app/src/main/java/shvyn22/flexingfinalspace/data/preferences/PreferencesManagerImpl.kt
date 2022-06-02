@@ -21,6 +21,6 @@ class PreferencesManagerImpl(
     }
 
     private object PreferencesKeys {
-        val DARK_THEME = booleanPreferencesKey("darkTheme")
+        val DARK_THEME = booleanPreferencesKey("isDarkTheme")
     }
 }

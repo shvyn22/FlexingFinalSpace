@@ -15,6 +15,7 @@ import org.junit.Test
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.data.local.dao.QuoteDao
+import shvyn22.flexingfinalspace.data.remote.api.ApiService
 import shvyn22.flexingfinalspace.data.util.fromQuoteDTOToModel
 import shvyn22.flexingfinalspace.util.*
 import javax.inject.Inject
@@ -26,7 +27,8 @@ class QuoteFragmentTest {
     val hiltRule = HiltAndroidRule(this)
 
     @Inject
-    lateinit var api: FakeApiService
+    lateinit var api: ApiService
+    private val fakeApi: FakeApiService get() = api as FakeApiService
 
     @Inject
     lateinit var dao: QuoteDao
@@ -38,8 +40,8 @@ class QuoteFragmentTest {
 
     @Test
     fun remoteIsAvailable_populateApiWith2Items_2ItemsAreInView() {
-        api.changeFailBehavior(false)
-        api.initQuotes(quotes)
+        fakeApi.changeFailBehavior(false)
+        fakeApi.initQuotes(quotes)
 
         launchFragmentInHiltContainer<QuoteFragment>()
 
@@ -57,8 +59,8 @@ class QuoteFragmentTest {
 
     @Test
     fun remoteIsAvailable_populateApiWith1Item_1ItemIsInView() {
-        api.changeFailBehavior(false)
-        api.initQuotes(listOf(quote1))
+        fakeApi.changeFailBehavior(false)
+        fakeApi.initQuotes(listOf(quote1))
 
         launchFragmentInHiltContainer<QuoteFragment>()
 
@@ -73,7 +75,7 @@ class QuoteFragmentTest {
 
     @Test
     fun remoteIsAvailable_populateApiWithNoItems_NoItemsAreInView() {
-        api.changeFailBehavior(false)
+        fakeApi.changeFailBehavior(false)
 
         launchFragmentInHiltContainer<QuoteFragment>()
 
@@ -85,8 +87,8 @@ class QuoteFragmentTest {
 
     @Test
     fun remoteIsNotAvailable_populateApiWith2Items_populateDaoWith1Item_1ItemIsInView() {
-        api.changeFailBehavior(true)
-        api.initQuotes(quotes)
+        fakeApi.changeFailBehavior(true)
+        fakeApi.initQuotes(quotes)
 
         runBlocking {
             dao.insertAll(listOf(fromQuoteDTOToModel(quote1)))
@@ -116,8 +118,8 @@ class QuoteFragmentTest {
 
     @Test
     fun remoteIsNotAvailable_populateApiWith2Items_populateDaoWithNoItems_NoItemsAreInView() {
-        api.changeFailBehavior(true)
-        api.initQuotes(quotes)
+        fakeApi.changeFailBehavior(true)
+        fakeApi.initQuotes(quotes)
 
         launchFragmentInHiltContainer<QuoteFragment>()
 

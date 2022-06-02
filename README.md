@@ -3,7 +3,7 @@ FlexingFinalSpace is an Android MVVM sample application created for learning pur
 This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and provides information about characters, episodes and quotes of [Final Space](https://www.imdb.com/title/tt6317068/) series.
 
 ## Screenshots
-### Light mode
+### Light theme
 <p float="left">
   <img src="assets/screen1.png" width=200/>
   <img src="assets/screen2.png" width=200/> 
@@ -11,12 +11,20 @@ This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and pro
   <img src="assets/screen4.png" width=200/>
 </p>
 
-### Dark mode
+### Dark theme
 <p float="left">
-  <img src="assets/screen1-dm.png" width=200/>
-  <img src="assets/screen2-dm.png" width=200/> 
-  <img src="assets/screen3-dm.png" width=200/>
-  <img src="assets/screen4-dm.png" width=200/>
+  <img src="assets/screen1-dt.png" width=200/>
+  <img src="assets/screen2-dt.png" width=200/> 
+  <img src="assets/screen3-dt.png" width=200/>
+  <img src="assets/screen4-dt.png" width=200/>
+</p>
+
+### Compose
+<p float="left">
+  <img src="assets/screen1-compose.png" width=200/>
+  <img src="assets/screen2-compose.png" width=200/> 
+  <img src="assets/screen3-compose.png" width=200/>
+  <img src="assets/screen4-compose.png" width=200/>
 </p>
 
 ## Tech stack and concepts
@@ -28,38 +36,39 @@ This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and pro
 * Single activity support.
   * **[Fragments](https://developer.android.com/jetpack/androidx/releases/fragment)**.
   * **[Navigation components](https://developer.android.com/jetpack/androidx/releases/navigation)**.
+* **[Jetpack Compose](https://developer.android.com/jetpack/compose)** as modern declarative UI toolkit (**/compose** branch).
 * Modern UI toolkit.
   * **[Material components](https://material.io/develop/android)**.
   * **ViewBinding** for binding .xml views to objects in Activities and Fragments.
 * Api-based remote data layer.
   * **[Retrofit](https://square.github.io/retrofit/)** for network queries.
   * **[GSON](https://github.com/google/gson)** for parsing JSON.
-    NOTE: considering switch to **Moshi**.
-* **[DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)** for working with user preferences (e.g. light/dark mode).
+* **[DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)** for working with user preferences (e.g. light/dark theme).
 * **[Room](https://developer.android.com/jetpack/androidx/releases/room)** for local data layer.
 * Caching remote data using **NetworkBoundResource** pattern (by utilizing Room, Retrofit and Flow).
 * **[Lifecycle components](https://developer.android.com/jetpack/androidx/releases/lifecycle)**.
   * **ViewModel** for implementing MVVM pattern.
-* **[Glide](https://github.com/bumptech/glide)** for working with images.
+* **[Glide](https://github.com/bumptech/glide)** and **[Coil](https://coil-kt.github.io/coil/)** for working with images.
 * Testing.
   * **JUnit**.
   * **[Android testing library](https://developer.android.com/jetpack/androidx/releases/test)**.
   * **Espresso** for UI-testing.
   * **Mockito** for mocking third-party classes (e.g. *NavController*).
   * Specific testing artifacts for other libraries.
+  * **Compose testing libraries**.
 * **[Hilt](https://dagger.dev/hilt/)** for dependency injection.
   * **[Dagger 2](https://dagger.dev/)** as its alternative (/Dagger2+RxJava branch).
 
 ## Architecture
 The application is divided into 3 layers:
-1. **UI** (.ui): MainActivity, Fragments and ViewModels associated with them.
+1. **UI** (.ui): MainActivity, Fragments (or Compose screens) and ViewModels associated with them.
 2. **Domain** (.repository): Repositories(abstractions and implementations).
 3. **Data** (.data, .api): API service, DTOs for remote data; Database, DAOs, Models for local data.
 
 For dependency flow there is .di package with corresponding modules.
 
 ## Project structure
-<img src="screenshots/project_structure.jpg" width=750/>
+<img src="assets/project_structure.jpg" width=750/>
 
 ## Attribution
 Icons:

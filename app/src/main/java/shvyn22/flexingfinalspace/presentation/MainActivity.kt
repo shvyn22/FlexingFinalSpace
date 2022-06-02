@@ -43,14 +43,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_app_bar, menu)
 
-        viewModel.isDarkTheme.collectOnLifecycle(this) { darkTheme ->
+        viewModel.isDarkTheme.collectOnLifecycle(this) { isDarkTheme ->
             AppCompatDelegate.setDefaultNightMode(
-                if (darkTheme) AppCompatDelegate.MODE_NIGHT_YES
+                if (isDarkTheme) AppCompatDelegate.MODE_NIGHT_YES
                 else AppCompatDelegate.MODE_NIGHT_NO
             )
 
             menu?.findItem(R.id.menu_mode)?.apply {
-                if (darkTheme) {
+                if (isDarkTheme) {
                     setIcon(R.drawable.ic_light_mode)
                     setTitle(R.string.mode_light)
                 } else {

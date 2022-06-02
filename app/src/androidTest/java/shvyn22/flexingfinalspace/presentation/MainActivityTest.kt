@@ -15,6 +15,7 @@ import org.junit.Rule
 import org.junit.Test
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.data.preferences.PreferencesManager
+import shvyn22.flexingfinalspace.data.remote.api.ApiService
 import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.di.tearDownPreferencesDependencies
 import shvyn22.flexingfinalspace.util.*
@@ -27,7 +28,8 @@ class MainActivityTest {
     val hiltRule = HiltAndroidRule(this)
 
     @Inject
-    lateinit var api: FakeApiService
+    lateinit var api: ApiService
+    private val fakeApi: FakeApiService get() = api as FakeApiService
 
     @Inject
     lateinit var scope: CoroutineScope
@@ -47,7 +49,7 @@ class MainActivityTest {
 
     @Test
     fun launchMainActivity_StartDestinationIsInView() {
-        api.initCharacters(characters)
+        fakeApi.initCharacters(characters)
 
         launchActivity<MainActivity>()
 
@@ -60,7 +62,7 @@ class MainActivityTest {
 
     @Test
     fun selectEpisodeTabOnBottomNavigation_EpisodeFragmentIsInView() {
-        api.initEpisodes(episodes)
+        fakeApi.initEpisodes(episodes)
 
         launchActivity<MainActivity>()
 
@@ -76,7 +78,7 @@ class MainActivityTest {
 
     @Test
     fun selectQuoteTabOnBottomNavigation_QuoteFragmentIsInView() {
-        api.initQuotes(quotes)
+        fakeApi.initQuotes(quotes)
 
         launchActivity<MainActivity>()
 
@@ -92,7 +94,7 @@ class MainActivityTest {
 
     @Test
     fun selectCharacterTabAfterAnotherTabs_CharacterFragmentIsInView() {
-        api.initCharacters(characters)
+        fakeApi.initCharacters(characters)
 
         launchActivity<MainActivity>()
 

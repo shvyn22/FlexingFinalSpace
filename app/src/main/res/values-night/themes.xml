@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.FinalSpaceApplication" parent="Theme.MaterialComponents.DayNight">
+    <style name="Theme.FlexingFinalSpace" parent="Theme.MaterialComponents.DayNight">
         <item name="colorPrimary">@color/black800</item>
         <item name="colorAccent">@color/black800</item>
         <item name="colorSurface">@color/black800</item>

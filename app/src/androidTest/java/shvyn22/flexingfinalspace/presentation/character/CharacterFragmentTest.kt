@@ -19,6 +19,7 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.data.local.dao.CharacterDao
+import shvyn22.flexingfinalspace.data.remote.api.ApiService
 import shvyn22.flexingfinalspace.data.remote.api.FakeApiService
 import shvyn22.flexingfinalspace.data.util.fromCharacterDTOToModel
 import shvyn22.flexingfinalspace.util.*
@@ -31,7 +32,8 @@ class CharacterFragmentTest {
     val hiltRule = HiltAndroidRule(this)
 
     @Inject
-    lateinit var api: FakeApiService
+    lateinit var api: ApiService
+    private val fakeApi: FakeApiService get() = api as FakeApiService
 
     @Inject
     lateinit var dao: CharacterDao
@@ -43,8 +45,8 @@ class CharacterFragmentTest {
 
     @Test
     fun remoteIsAvailable_populateApiWith2Items_2ItemsAreInView() {
-        api.changeFailBehavior(false)
-        api.initCharacters(characters)
+        fakeApi.changeFailBehavior(false)
+        fakeApi.initCharacters(characters)
 
         launchFragmentInHiltContainer<CharacterFragment>()
 
@@ -62,8 +64,8 @@ class CharacterFragmentTest {
 
     @Test
     fun remoteIsAvailable_populateApiWith1Item_1ItemIsInView() {
-        api.changeFailBehavior(false)
-        api.initCharacters(listOf(character1))
+        fakeApi.changeFailBehavior(false)
+        fakeApi.initCharacters(listOf(character1))
 
         launchFragmentInHiltContainer<CharacterFragment>()
 
@@ -78,7 +80,7 @@ class CharacterFragmentTest {
 
     @Test
     fun remoteIsAvailable_populateApiWithNoItems_NoItemsAreInView() {
-        api.changeFailBehavior(false)
+        fakeApi.changeFailBehavior(false)
 
         launchFragmentInHiltContainer<CharacterFragment>()
 
@@ -90,8 +92,8 @@ class CharacterFragmentTest {
 
     @Test
     fun remoteIsNotAvailable_populateApiWith2Items_populateDaoWith1Item_1ItemIsInView() {
-        api.changeFailBehavior(true)
-        api.initCharacters(characters)
+        fakeApi.changeFailBehavior(true)
+        fakeApi.initCharacters(characters)
 
         runBlocking {
             dao.insertAll(listOf(fromCharacterDTOToModel(character1)))
@@ -121,8 +123,8 @@ class CharacterFragmentTest {
 
     @Test
     fun remoteIsNotAvailable_populateApiWith2Items_populateDaoWithNoItems_NoItemsAreInView() {
-        api.changeFailBehavior(true)
-        api.initCharacters(characters)
+        fakeApi.changeFailBehavior(true)
+        fakeApi.initCharacters(characters)
 
         launchFragmentInHiltContainer<CharacterFragment>()
 
@@ -147,8 +149,8 @@ class CharacterFragmentTest {
     fun selectItem_navigateToDetailsFragment() {
         val navController = mock(NavController::class.java)
 
-        api.changeFailBehavior(false)
-        api.initCharacters(characters)
+        fakeApi.changeFailBehavior(false)
+        fakeApi.initCharacters(characters)
 
         launchFragmentInHiltContainer<CharacterFragment>(
             navController = navController
