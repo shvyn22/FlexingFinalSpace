@@ -1,6 +1,7 @@
 package shvyn22.flexingfinalspace.presentation
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
@@ -27,6 +28,7 @@ class MainViewModelTest {
     @Test
     fun editInitialMode_ReturnsModeNightYes() = runTest {
         viewModel.editThemePreferences(true)
+        advanceUntilIdle()
 
         assertThat(
             viewModel.isDarkTheme.value,
@@ -37,6 +39,7 @@ class MainViewModelTest {
     @Test
     fun toggleModes_ReturnsValidMode() = runTest {
         viewModel.editThemePreferences(true)
+        advanceUntilIdle()
 
         assertThat(
             viewModel.isDarkTheme.value,
@@ -44,6 +47,7 @@ class MainViewModelTest {
         )
 
         viewModel.editThemePreferences(false)
+        advanceUntilIdle()
 
         assertThat(
             viewModel.isDarkTheme.value,

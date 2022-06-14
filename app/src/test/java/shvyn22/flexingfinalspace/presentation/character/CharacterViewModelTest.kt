@@ -3,6 +3,7 @@ package shvyn22.flexingfinalspace.presentation.character
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.instanceOf
@@ -42,6 +43,7 @@ class CharacterViewModelTest {
         api.initCharacters(characters)
 
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,
@@ -59,6 +61,7 @@ class CharacterViewModelTest {
         api.initCharacters(listOf(character1))
 
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,
@@ -74,6 +77,7 @@ class CharacterViewModelTest {
     @Test
     fun populateWithNoItems_ReturnsNoCharacter() = runTest {
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,

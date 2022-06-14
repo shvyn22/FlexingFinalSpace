@@ -3,6 +3,7 @@ package shvyn22.flexingfinalspace.presentation.episode
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.instanceOf
@@ -42,6 +43,7 @@ class EpisodeViewModelTest {
         api.initEpisodes(episodes)
 
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,
@@ -59,6 +61,7 @@ class EpisodeViewModelTest {
         api.initEpisodes(listOf(episode1))
 
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,
@@ -74,6 +77,7 @@ class EpisodeViewModelTest {
     @Test
     fun populateWithNoItems_ReturnsNoEpisode() = runTest {
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,

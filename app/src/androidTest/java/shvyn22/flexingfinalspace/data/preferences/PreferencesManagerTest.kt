@@ -40,7 +40,6 @@ class PreferencesManagerTest {
 
     @Test
     fun editInitialMode_ReturnsModeNightYes() = runTest {
-
         preferencesManager.editThemePreferences(true)
 
         val nightMode = preferencesManager.isDarkTheme.first()
@@ -53,7 +52,6 @@ class PreferencesManagerTest {
 
     @Test
     fun toggleModes_ReturnsValidMode() = runTest {
-
         preferencesManager.editThemePreferences(false)
 
         val initialMode = preferencesManager.isDarkTheme.first()

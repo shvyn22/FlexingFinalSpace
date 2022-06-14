@@ -3,6 +3,7 @@ package shvyn22.flexingfinalspace.presentation.quote
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.instanceOf
@@ -42,6 +43,7 @@ class QuoteViewModelTest {
         api.initQuotes(quotes)
 
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,
@@ -59,6 +61,7 @@ class QuoteViewModelTest {
         api.initQuotes(listOf(quote1))
 
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,
@@ -74,6 +77,7 @@ class QuoteViewModelTest {
     @Test
     fun populateWithNoItems_ReturnsNoQuote() = runTest {
         val items = viewModel.items.drop(1).first()
+        advanceUntilIdle()
 
         assertThat(
             items,
