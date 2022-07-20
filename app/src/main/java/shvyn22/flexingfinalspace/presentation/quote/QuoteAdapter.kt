@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 import shvyn22.flexingfinalspace.data.local.model.QuoteModel
 import shvyn22.flexingfinalspace.databinding.ItemQuoteBinding
 import shvyn22.flexingfinalspace.util.defaultRequests
@@ -40,10 +40,9 @@ class QuoteAdapter: RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>() {
 
         fun bind(item: QuoteModel) {
             binding.apply {
-                Glide.with(itemView)
-                    .load(item.imgURL)
-                    .defaultRequests()
-                    .into(ivImage)
+                ivImage.load(item.imgURL) {
+                    defaultRequests()
+                }
 
                 tvAuthor.text = item.author
                 tvQuote.text = item.quote

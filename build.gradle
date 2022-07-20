@@ -45,8 +45,8 @@ buildscript {
         // Retrofit
         retrofitVersion = "2.8.1"
 
-        // Glide
-        glideVersion = "4.12.0"
+        // Coil
+        coilVersion = "2.1.0"
 
         // Gradle
         gradleVersion = "7.0.2"

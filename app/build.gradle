@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "shvyn22.flexingfinalspace"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -118,6 +118,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
-    // Glide
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    // Coil
+    implementation "io.coil-kt:coil:$coilVersion"
 }

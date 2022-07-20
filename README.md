@@ -1,5 +1,5 @@
 # FlexingFinalSpace
-FlexingFinalSpace is an Android MVVM sample application created for learning purposes only.\
+FlexingFinalSpace is an Android sample application created for learning purposes only.\
 This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and provides information about characters, episodes and quotes of [Final Space](https://www.imdb.com/title/tt6317068/) series.
 
 ## Screenshots
@@ -29,10 +29,8 @@ This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and pro
 
 ## Tech stack and concepts
 * **[Kotlin](https://kotlinlang.org/)** as programming language.
-* **[Kotlin coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/)** as framework for asynchronous jobs.
-  * **[RxJava](https://github.com/ReactiveX/RxJava)** as its alternative (/Dagger2+RxJava branch).
-  * **Flow**(*StateFlow*) as dataholder for UI layer.
-    * **Livedata** as its alternative (/Dagger2+RxJava branch).
+* **[Kotlin coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/)** as framework for asynchronous jobs (**[RxJava](https://github.com/ReactiveX/RxJava)** as its alternative (**/Dagger2+RxJava** branch)).
+  * **Flow** (*StateFlow*) as dataholder for UI layer (**Livedata** as its alternative (**/Dagger2+RxJava** branch)).
 * Single activity support.
   * **[Fragments](https://developer.android.com/jetpack/androidx/releases/fragment)**.
   * **[Navigation components](https://developer.android.com/jetpack/androidx/releases/navigation)**.
@@ -56,19 +54,15 @@ This application is based on [FinalSpaceAPI](https://finalspaceapi.com/) and pro
   * **Mockito** for mocking third-party classes (e.g. *NavController*).
   * Specific testing artifacts for other libraries.
   * **Compose testing libraries**.
-* **[Hilt](https://dagger.dev/hilt/)** for dependency injection.
-  * **[Dagger 2](https://dagger.dev/)** as its alternative (/Dagger2+RxJava branch).
+* **[Hilt](https://dagger.dev/hilt/)** for dependency injection (**[Dagger 2](https://dagger.dev/)** as its alternative (**/Dagger2+RxJava** branch)).
 
-## Architecture
-The application is divided into 3 layers:
-1. **UI** (.ui): MainActivity, Fragments (or Compose screens) and ViewModels associated with them.
-2. **Domain** (.repository): Repositories(abstractions and implementations).
-3. **Data** (.data, .api): API service, DTOs for remote data; Database, DAOs, Models for local data.
-
-For dependency flow there is .di package with corresponding modules.
-
-## Project structure
-<img src="assets/project_structure.jpg" width=750/>
+## Key features
+#### i.e. what is unique among other samples?
+* **Offline-first** approach implementation utilizing **NetworkBoundResource**
+* **GridLayoutManager** for **RecyclerView**
+* **BottomSheetDialog** implementation
+* **Coil** as image-loading library for View system
+* Espresso **ViewAssertion** for menu items
 
 ## Attribution
 Icons:

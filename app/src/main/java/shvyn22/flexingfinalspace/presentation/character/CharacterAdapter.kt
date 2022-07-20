@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 import shvyn22.flexingfinalspace.data.local.model.CharacterModel
 import shvyn22.flexingfinalspace.databinding.ItemGridBinding
 import shvyn22.flexingfinalspace.util.defaultRequests
@@ -44,10 +44,9 @@ class CharacterAdapter(
             binding.apply {
                 root.setOnClickListener { onClick(item) }
 
-                Glide.with(itemView)
-                    .load(item.imgURL)
-                    .defaultRequests()
-                    .into(ivImage)
+                ivImage.load(item.imgURL) {
+                    defaultRequests()
+                }
 
                 tvName.text = item.name
             }

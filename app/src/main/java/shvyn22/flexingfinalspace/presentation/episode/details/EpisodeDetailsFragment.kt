@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
+import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.FragmentEpisodeDetailsBinding
@@ -31,10 +31,9 @@ class EpisodeDetailsFragment : BottomSheetDialogFragment() {
         val episode = args.episode
 
         binding.apply {
-            Glide.with(view)
-                .load(episode.imgURL)
-                .defaultRequests()
-                .into(ivImage)
+            ivImage.load(episode.imgURL) {
+                defaultRequests()
+            }
 
             tvName.text = episode.name
             tvAirDate.text = episode.airDate

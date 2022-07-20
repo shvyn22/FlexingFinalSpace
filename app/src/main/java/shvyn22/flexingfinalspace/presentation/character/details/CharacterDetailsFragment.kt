@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import shvyn22.flexingfinalspace.R
 import shvyn22.flexingfinalspace.databinding.FragmentCharacterDetailsBinding
 import shvyn22.flexingfinalspace.util.defaultRequests
 
 @AndroidEntryPoint
-class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
+class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
 
     private val args: CharacterDetailsFragmentArgs by navArgs()
 
@@ -23,10 +23,9 @@ class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
         val character = args.character
 
         binding.apply {
-            Glide.with(view)
-                .load(character.imgURL)
-                .defaultRequests()
-                .into(ivImage)
+            ivImage.load(character.imgURL) {
+                defaultRequests()
+            }
 
             ivStatus.setImageResource(
                 when {
@@ -39,12 +38,12 @@ class CharacterDetailsFragment: Fragment(R.layout.fragment_character_details) {
 
             tvName.text = character.name
             tvAlias.text = getString(
-                    R.string.text_alias,
-                    character.alias.joinToString(", ")
+                R.string.text_alias,
+                character.alias.joinToString(", ")
             )
             tvAbilities.text = getString(
-                    R.string.text_abilities,
-                    character.abilities.joinToString(", ")
+                R.string.text_abilities,
+                character.abilities.joinToString(", ")
             )
             tvSpecies.text = getString(R.string.text_species, character.species)
             tvGender.text = getString(R.string.text_gender, character.gender)
